@@ -21,14 +21,14 @@ release:
 dockers:
   -
     image_templates:
-    - "docker.pkg.github.com/anotherlife/gh-tempaltizer/{{ .ProjectName }}:latest"
-    - "docker.pkg.github.com/anotherlife/gh-tempaltizer/{{ .ProjectName }}:{{ .Major }}"
-    - "docker.pkg.github.com/anotherlife/gh-tempaltizer/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}"
-    - "docker.pkg.github.com/anotherlife/gh-tempaltizer/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}.{{ .Patch }}"
+    - "docker.pkg.github.com/wesovilabs/tempaltizer/{{ .ProjectName }}:latest"
+    - "docker.pkg.github.com/wesovilabs/tempaltizer/{{ .ProjectName }}:{{ .Major }}"
+    - "docker.pkg.github.com/wesovilabs/tempaltizer/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}"
+    - "docker.pkg.github.com/wesovilabs/tempaltizer/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}.{{ .Patch }}"
     build_flag_templates:
     - "--pull"
-    - "--label=org.opencontainers.image.created={{.Date}}"
-    - "--label=org.opencontainers.image.name={{.ProjectName}}"
-    - "--label=org.opencontainers.image.revision={{.FullCommit}}"
-    - "--label=org.opencontainers.image.version={{.Version}}"
-    - "--label=org.opencontainers.image.source={{.GitURL}}"
+    - "--label=org.wesovilabs.image.created={{.Date}}"
+    - "--label=org.wesovilabs.image.name={{.ProjectName}}"
+    - "--label=org.wesovilabs.image.revision={{.FullCommit}}"
+    - "--label=org.wesovilabs.image.version={{.Version}}"
+    - "--label=org.wesovilabs.image.source={{.GitURL}}"

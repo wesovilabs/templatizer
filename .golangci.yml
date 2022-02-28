@@ -104,7 +104,6 @@ linters:
     - goerr113
     - nestif
     - prealloc
-    - testpackage
     - revive
     #- wsl
     ###### deprecated
@@ -113,7 +112,8 @@ linters:
     #- maligned
     ######
     ###### ignoring
-    #- gochecknoglobals
+    # - gochecknoglobals
+    # - testpackage
 
 issues:
   # Excluding configuration per-path, per-linter, per-text and per-source
