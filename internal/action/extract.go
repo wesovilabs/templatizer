@@ -37,10 +37,10 @@ func extract(repoFiles []repoFile, mode string) Variables {
 				vars = append(vars, v[2])
 			}
 		}
-		all_vars := findMatches(repoFile.content, reVars, reExcluded)
-		if len(all_vars) > 0 {
+		allVars := findMatches(repoFile.content, reVars, reExcluded)
+		if len(allVars) > 0 {
 			log.Debugf("\tThe file %s contains variables", filepath.Base(repoFile.name))
-			for _, v := range all_vars {
+			for _, v := range allVars {
 				vars = append(vars, v[2])
 			}
 		}
@@ -57,7 +57,7 @@ func findMatches(text string, re *regexp.Regexp, reExclude *regexp.Regexp) [][]s
 	excludes := reExclude.FindAllStringSubmatch(text, -1)
 	if len(excludes) > 0 {
 		for _, v := range excludes {
-			text = strings.Replace(text, v[0], "", -1)
+			text = strings.ReplaceAll(text, v[0], "")
 		}
 	}
 	return re.FindAllStringSubmatch(text, -1)

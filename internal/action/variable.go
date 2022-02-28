@@ -3,7 +3,9 @@ package action
 import (
 	"fmt"
 	"io/ioutil"
+	"os"
 
+	log "github.com/sirupsen/logrus"
 	"gopkg.in/yaml.v2"
 )
 
@@ -26,13 +28,15 @@ func varWithFullPath(prefix string, children Variables) []string {
 	return output
 }
 
-func (v Variables) ToYAML(path string) error {
+func (v Variables) ToYAML(path string) {
 	v.pruneVariables()
 	data, err := yaml.Marshal(&v)
 	if err != nil {
-		return err
+		log.Warnf("it fails silently creating the params file: %s", err.Error())
 	}
-	return ioutil.WriteFile(path, data, 0666)
+	if err := ioutil.WriteFile(path, data, os.ModePerm); err != nil {
+		log.Warnf("it fails silently creating the params file: %s", err.Error())
+	}
 }
 
 func (v Variables) pruneVariables() {

@@ -27,10 +27,12 @@ func cloneRepositorty(repoURL string, branch string, auth http.AuthMethod) (*git
 	}
 	if branch != "" {
 		log.Debugf("- pull branch %s", branch)
-		w.Pull(&git.PullOptions{
+		if err := w.Pull(&git.PullOptions{
 			SingleBranch: true,
 			RemoteName:   branch,
-		})
+		}); err != nil {
+			log.Warnf("branch %s cannot be pulled by %s", branch, err.Error())
+		}
 	}
 	return w, nil
 }

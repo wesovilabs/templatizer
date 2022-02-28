@@ -1,4 +1,4 @@
-module github.com/anotherlife/templatizer
+module github.com/wesovilabs/templatizer
 
 go 1.17
 

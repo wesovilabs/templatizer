@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/anotherlife/templatizer/internal/action"
+	"github.com/wesovilabs/templatizer/internal/action"
 
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
@@ -30,13 +30,20 @@ func command() *cobra.Command {
 		Run: runTemplatizer,
 	}
 
-	cmd.PersistentFlags().BoolVar(&debug, "verbose", false, "verbose logging")
-	cmd.PersistentFlags().StringVar(&repoPath, "source", "", "path to the repo i.e. github.com/ivancorrales/go-rest-template)")
-	cmd.PersistentFlags().StringVarP(&username, "username", "u", "", "user handle")
-	cmd.PersistentFlags().StringVarP(&password, "password", "p", "", "user secret for the provided username")
-	cmd.PersistentFlags().StringVarP(&templateMode, "mode", "m", "goTemplate", "template mode used tod efine the variables. ")
-	cmd.PersistentFlags().StringVarP(&inputPath, "input", "i", "", "path to the input files that contains the variables")
-	cmd.PersistentFlags().StringVar(&targetDir, "target", "", "Path to the folder in which the repository will be created")
+	cmd.PersistentFlags().BoolVar(&debug, "verbose", false,
+		"verbose logging")
+	cmd.PersistentFlags().StringVar(&repoPath, "source", "",
+		"path to the repo i.e. github.com/ivancorrales/go-rest-template)")
+	cmd.PersistentFlags().StringVarP(&username, "username", "u", "",
+		"user handle")
+	cmd.PersistentFlags().StringVarP(&password, "password", "p", "",
+		"user secret for the provided username")
+	cmd.PersistentFlags().StringVarP(&templateMode, "mode", "m", "goTemplate",
+		"template mode used tod efine the variables. ")
+	cmd.PersistentFlags().StringVarP(&inputPath, "input", "i", "",
+		"path to the input files that contains the variables")
+	cmd.PersistentFlags().StringVar(&targetDir, "target", "",
+		"Path to the folder in which the repository will be created")
 	return cmd
 }
 

@@ -98,7 +98,6 @@ linters:
     - varcheck
     - whitespace
     - asciicheck
-    - gochecknoglobals
     - gocognit
     - godot
     - godox
@@ -113,6 +112,8 @@ linters:
     #- interfacer
     #- maligned
     ######
+    ###### ignoring
+    #- gochecknoglobals
 
 issues:
   # Excluding configuration per-path, per-linter, per-text and per-source

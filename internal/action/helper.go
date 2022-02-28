@@ -69,7 +69,6 @@ func processRepositoryFiles(targetDir string, repoFiles []repoFile, path string,
 }
 
 func executeTemplate(name, content string, variables interface{}) string {
-	//t := template.Must(template.New(name).Parse(content))
 	t, err := template.New(name).Parse(content)
 	if err != nil {
 		log.Warn(err)

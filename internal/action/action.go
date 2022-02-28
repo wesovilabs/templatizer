@@ -10,6 +10,9 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
+type Action interface {
+	Execute() error
+}
 type action struct {
 	repoURL       string
 	username      string
@@ -72,11 +75,13 @@ func WithVariables(inputVarsPath string) Option {
 			log.Fatalf("unexpected error unmarhsaling the input file %s: '%s'", inputVarsPath, err)
 		}
 		act.variablesPath = inputVarsPath
-
 	}
 }
 
-func New(opts ...Option) *action {
+/*
+	New creates an instance of action struct
+*/
+func New(opts ...Option) Action {
 	act := &action{
 		templateMode:  "goTemplate",
 		variablesPath: "tempaltize-vars.yml",
@@ -106,7 +111,11 @@ func (act *action) Execute() error {
 	variables := extract(repoFiles, act.templateMode)
 	if len(variables) > 0 && act.inputVars == nil {
 		variables.ToYAML(act.variablesPath)
-		log.Warnf("The repository contains variables that need to be provided.\nPlease, set the values for file '%s' and invoke the command again.", act.variablesPath)
+		log.Warnf(`
+		The repository contains variables that need to be provided.
+		Please set the values for file '%s' and invoke the command again.
+		`,
+			act.variablesPath)
 		return nil
 	}
 	log.Debugf("create repository in path %s", act.targetDir)
