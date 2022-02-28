@@ -1,6 +1,6 @@
-module github.com/{{.repository.organization}}/{{.repository.name}}/build
+module github.com/wesovilabs/templatizer/build
 
-go {{.goVersion}}
+go 1.17
 
 require (
 	github.com/golangci/golangci-lint v1.44.2

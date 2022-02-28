@@ -14,6 +14,8 @@
 
 The intention of Templatizer is to empower the way to take advantage of template repositories. It's known that Github (nor Gitlab) doesn't provide us a handy way to take advantage of the Template repositories. When we start from a Template we usually need to do a lof of manual replacement tasks.
 
+
+
 ### Intallation
 
 ###
