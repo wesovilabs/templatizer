@@ -19,16 +19,16 @@ release:
   github:
   prerelease: auto
 dockers:
-  -
-    image_templates:
-    - "docker.pkg.github.com/wesovilabs/tempaltizer/{{ .ProjectName }}:latest"
-    - "docker.pkg.github.com/wesovilabs/tempaltizer/{{ .ProjectName }}:{{ .Major }}"
-    - "docker.pkg.github.com/wesovilabs/tempaltizer/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}"
-    - "docker.pkg.github.com/wesovilabs/tempaltizer/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}.{{ .Patch }}"
+  - image_templates:
+    - "docker.pkg.github.com/wesovilabs/templatizer:latest"
+    - "docker.pkg.github.com/wesovilabs/templatizer:{{ .Major }}"
+    - "docker.pkg.github.com/wesovilabs/templatizer:{{ .Major }}.{{ .Minor }}"
+    - "docker.pkg.github.com/wesovilabs/templatizer:{{ .Major }}.{{ .Minor }}.{{ .Patch }}"
+    dockerfile: ./Dockerfile
     build_flag_templates:
     - "--pull"
-    - "--label=org.wesovilabs.image.created={{.Date}}"
-    - "--label=org.wesovilabs.image.name={{.ProjectName}}"
-    - "--label=org.wesovilabs.image.revision={{.FullCommit}}"
-    - "--label=org.wesovilabs.image.version={{.Version}}"
-    - "--label=org.wesovilabs.image.source={{.GitURL}}"
+    - "--label=org.opencontainer.image.created={{.Date}}"
+    - "--label=org.opencontainer.image.name={{.ProjectName}}"
+    - "--label=org.opencontainer.image.revision={{.FullCommit}}"
+    - "--label=org.opencontainer.image.version={{.Version}}"
+    - "--label=org.opencontainer.image.source={{.GitURL}}"
