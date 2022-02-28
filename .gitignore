@@ -5,3 +5,4 @@ dist
 vendor
 temp
 .test-report
+.DS_Store
