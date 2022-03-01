@@ -21,7 +21,7 @@
 #### Brew tap
 
 #### From source code
-## Usage: Consuming templates
+## Create a repository from a templates
 ### Generate params file
 To create a repository from a template we need to pass an input file with the
 required variables. Instead of creating this file by hand we can take advantage
@@ -36,7 +36,7 @@ Additionally we can pass the following flags:
 --username: Github|gitlab user handle
 --password: The password for the username
 ```
-### Create repository from template
+### Create files
 
 ```bash
 templatizer create --from github.com/ivancorrales/seed
@@ -49,7 +49,7 @@ doesn't exist we will be required to pass the input file with flag `--params`
 templatizer create --from github.com/ivancorrales/seed --param customize-template.yml
 ```
 
-## Usage: Creating a template
+## Provide a template
 
 By default the templatizer tool will inspect all the files in the repository template and It will create a named file `templatizer-params.yml` with the variables to be populated. Additionally we could
 
