@@ -14,8 +14,31 @@
 **Templater** is created to empower the mechanism to take advantage of template repositories. It's known that Github (nor Gitlab) doesn't provide us a handy way to take advantage of the Template repositories. When we start from a Template we usually need to do a lot of manual and inefficient replacement tasks.
 ## Getting started
 
+### Installation
 `templatizer` can be installed by running
+
+####
+#### Brew tap
+
+#### From source code
 ## Usage
+
+### Generate params file
+To create a repository from a template we need to pass an input file with the
+required variables. Instead of creating this file by hand we can take advantage
+of the following command
+
+```bash
+templatizer from github.com/ivancorrales/seed
+```
+Additionally we can pass the following flags:
+
+```yaml
+--username: Github|gitlab user handle
+--password: The password for the username
+```
+###
+
 
 ## Contributing
 
