@@ -12,7 +12,6 @@ LDFLAGS   = -ldflags "\
 # Go
 GO  = GOFLAGS=-mod=vendor go
 GOBUILD  = CGO_ENABLED=0 $(GO) build $(LDFLAGS)
-TEST_REPORT_DIR=.test-report
 
 .DEFAULT_GOAL := dev
 
@@ -54,9 +53,8 @@ lint: ## golangci-lint
 .PHONY: test
 test: ## go test with race detector and code covarage
 	$(call print-target)
-	mkdir -p $(TEST_REPORT_DIR)
-	go test -race -covermode=atomic -coverprofile=$(TEST_REPORT_DIR)/coverage.out ./...
-	go tool cover -html=$(TEST_REPORT_DIR)/coverage.out -o $(TEST_REPORT_DIR)/coverage.html
+	go test -race -covermode=atomic -coverprofile=coverage.out ./...
+	go tool cover -html=coverage.out -o coverage.html
 
 .PHONY: mod-tidy
 mod-tidy: ## go mod tidy
