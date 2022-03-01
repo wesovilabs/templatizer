@@ -1,0 +1,46 @@
+name: lint
+
+on:
+  push:
+    branches: "*"
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  golangci-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code into the Go module directory
+        uses: actions/checkout@v2
+      - name: golangci-lint
+        uses: reviewdog/action-golangci-lint@v2
+  hadolint:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@v2
+    - name: hadolint
+      uses: hadolint/hadolint-action@v1.6.0
+      with:
+        dockerfile: Dockerfile
+
+
+  goreleaser:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-go@v2
+        with:
+          go-version: 1.17
+
+      - name: "Docker login"
+        run: docker login docker.pkg.github.com -u docker -p ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Release
+        run: make release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -32,3 +32,9 @@ dockers:
     - "--label=org.opencontainer.image.revision={{.FullCommit}}"
     - "--label=org.opencontainer.image.version={{.Version}}"
     - "--label=org.opencontainer.image.source={{.GitURL}}"
+brews:
+  - tap:
+      owner: wesovilabs
+      name: homebrew-wesovilabs
+    folder: Formula
+    homepage: https://github.com/wesovilabs/templatizer
