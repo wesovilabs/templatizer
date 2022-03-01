@@ -12,16 +12,13 @@
 
 
 **Templater** is created to empower the mechanism to take advantage of template repositories. It's known that Github (nor Gitlab) doesn't provide us a handy way to take advantage of the Template repositories. When we start from a Template we usually need to do a lot of manual and inefficient replacement tasks.
-## Getting started
+## Installation
 
-### Installation
-`templatizer` can be installed by running
+### Download the artifact
+### Brew tap
 
-####
-#### Brew tap
-
-#### From source code
-## Create a repository from a templates
+### From source code
+## Create a repository from a template
 ### Generate params file
 To create a repository from a template we need to pass an input file with the
 required variables. Instead of creating this file by hand we can take advantage
