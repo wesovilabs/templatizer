@@ -12,10 +12,11 @@
 
 
 **Templater** is created to empower the mechanism to take advantage of template repositories. It's known that Github (nor Gitlab) doesn't provide us a handy way to take advantage of the Template repositories. When we start from a Template we usually need to do a lot of manual and inefficient replacement tasks.
-
 ## Getting started
 
+`templatizer` can be installed by running
 ## Usage
+
 ## Contributing
 
 Contributions are welcome, but before doing it I hardly recommend you to have a look at the [CONTRIBUTING.md](CONTRIBUTING.md) and the [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).

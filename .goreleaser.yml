@@ -20,10 +20,10 @@ release:
   prerelease: auto
 dockers:
   - image_templates:
-    - "docker.pkg.github.com/wesovilabs/templatizer:latest"
-    - "docker.pkg.github.com/wesovilabs/templatizer:{{ .Major }}"
-    - "docker.pkg.github.com/wesovilabs/templatizer:{{ .Major }}.{{ .Minor }}"
-    - "docker.pkg.github.com/wesovilabs/templatizer:{{ .Major }}.{{ .Minor }}.{{ .Patch }}"
+    - "docker.pkg.github.com/wesovilabs/templatizer/{{.ProjectName}}:latest"
+    - "docker.pkg.github.com/wesovilabs/templatizer/{{.ProjectName}}:{{ .Major }}"
+    - "docker.pkg.github.com/wesovilabs/templatizer/{{.ProjectName}}:{{ .Major }}.{{ .Minor }}"
+    - "docker.pkg.github.com/wesovilabs/templatizer/{{.ProjectName}}:{{ .Major }}.{{ .Minor }}.{{ .Patch }}"
     dockerfile: ./Dockerfile
     build_flag_templates:
     - "--pull"
