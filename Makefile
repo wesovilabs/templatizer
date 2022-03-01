@@ -62,20 +62,14 @@ mod-tidy: ## go mod tidy
 	go mod tidy
 	cd tools && go mod tidy
 
-.PHONY: diff
-diff: ## git diff
-	$(call print-target)
-	git diff --exit-code
-	RES=$$(git status --porcelain) ; if [ -n "$$RES" ]; then echo $$RES && exit 1 ; fi
-
 .PHONY: build
-build: ## goreleaser --snapshot --skip-publish --rm-dist
+build:
 build: install
 	$(call print-target)
 	goreleaser --snapshot --skip-publish --rm-dist
 
 .PHONY: release
-release: ## goreleaser --rm-dist
+release:
 release: install
 	$(call print-target)
 	goreleaser --rm-dist
