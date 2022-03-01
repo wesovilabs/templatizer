@@ -42,7 +42,7 @@ jobs:
         with:
           file: ./coverage.out
           flags: ${{ runner.os }}
-  ci:
+  build:
     strategy:
       fail-fast: false
       matrix:
@@ -56,15 +56,6 @@ jobs:
       run:
         shell: bash
     steps:
-      - name: Upload dist
-        uses: actions/upload-artifact@v2
-        with:
-          name: dist
-          path: dist
-
-  release-test:
-    runs-on: ubuntu-20.04
-    steps:
       - name: Check out code into the Go module directory
         uses: actions/checkout@v2
       - name: Configure go version
@@ -73,3 +64,8 @@ jobs:
           go-version: 1.17
       - name: Release test
         run: make clean mod-tidy install build
+      - name: Upload dist
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: dist
