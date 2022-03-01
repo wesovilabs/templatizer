@@ -17,7 +17,7 @@ GOBUILD  = CGO_ENABLED=0 $(GO) build $(LDFLAGS)
 
 .PHONY: ci
 ci: ## CI build
-ci: dev diff
+ci: dev #diff
 
 .PHONy: setup
 setup:

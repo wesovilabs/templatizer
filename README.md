@@ -1,3 +1,4 @@
+# Templatizer
 [![Keep a Changelog](https://img.shields.io/badge/changelog-Keep%20a%20Changelog-%23E05735)](CHANGELOG.md)
 [![GitHub Release](https://img.shields.io/github/v/release/wesovilabs/templatizer)](https://github.com/wesovilabs/templatizer/releases)
 [![Go Reference](https://pkg.go.dev/badge/github.com/wesovilabs/templatizer.svg)](https://pkg.go.dev/github.com/wesovilabs/templatizer)
@@ -8,9 +9,10 @@
 [![Codecov](https://codecov.io/gh/wesovilabs/templatizer/branch/main/graph/badge.svg)](https://codecov.io/gh/wesovilabs/templatizer)
 [![CodeQL](https://github.com/wesovilabs/templatizer/actions/workflows/codeql-analysis.yml/badge.svg?branch=main)](https://github.com/wesovilabs/templatizer/actions/workflows/codeql-analysis.yml)
 ---
-# Templatizer
 
-Template is created to empower the way to take advantage of template repositories. It's known that Github (nor Gitlab) doesn't provide us a handy way to take advantage of the Template repositories. When we start from a Template we usually need to do a lof of manual replacement tasks.
+
+**Templater** is created to empower the mechanism to take advantage of template repositories. It's known that Github (nor Gitlab) doesn't provide us a handy way to take advantage of the Template repositories. When we start from a Template we usually need to do a lot of manual and inefficient replacement tasks.
+
 ## Getting started
 
 ## Usage
@@ -24,5 +26,5 @@ if you work with MacOS you can take advantage of [homebrew](https://brew.sh/inde
 
 In other case you would need to setup manually the following tools:
 
-- [Hadolint]: Visit the [official repository](https://github.com/hadolint/hadolint)
-- [pre-commit]: Visit the [official site])(https://pre-commit.com/).
+- **Hadolint**: Visit the [official repository](https://github.com/hadolint/hadolint)
+- **pre-commit**: Visit the [official site])(https://pre-commit.com/).
