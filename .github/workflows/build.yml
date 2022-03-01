@@ -51,7 +51,6 @@ jobs:
     needs:
       - linters
       - tests
-      - release-test
     defaults:
       run:
         shell: bash
