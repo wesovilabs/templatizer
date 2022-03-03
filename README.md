@@ -10,8 +10,9 @@
 [![CodeQL](https://github.com/wesovilabs/templatizer/actions/workflows/codeql-analysis.yml/badge.svg?branch=main)](https://github.com/wesovilabs/templatizer/actions/workflows/codeql-analysis.yml)
 ---
 
+The intention of **Templatizer** is to provide a handy and powerful mechanism to create custom projects from templates.
 
-**Templater** is created to empower the mechanism to take advantage of template repositories. It's known that Github (nor Gitlab) doesn't provide us a handy way to take advantage of the Template repositories. When we start from a Template we usually need to do a lot of manual and inefficient replacement tasks.
+Tools such as Github or Gitlab claim that they support repositories as templates. Actually,  they permit us to define repositories as templates but we need to make a copy and then we need to do as many replacements as we need.  Sincerely this is not a template system from my point of view.
 ## Installation
 
 **Download the artifact**

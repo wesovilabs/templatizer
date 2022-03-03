@@ -1,8 +1,0 @@
-ProjectName: My Repo
-application:
-  version: 0.0.1
-applicationName: 
-goVersion: 1.17
-repository:
-  name: my-repo
-  organization: wesovilabs

@@ -1,4 +1,4 @@
-package action
+package templatizer
 
 import (
 	"os"
@@ -35,14 +35,4 @@ func cloneRepositorty(repoURL string, branch string, auth http.AuthMethod) (*git
 		}
 	}
 	return w, nil
-}
-
-func fetchFilesContent(w *git.Worktree) []repoFile {
-	log.Debug("- iterate over the files in the repository")
-	return iterateDirs(w.Filesystem, "/")
-}
-
-func saveRepository(repoFiles []repoFile, targetDir string, variables Variables) {
-	log.Debug("- process files in the repository")
-	processRepositoryFiles(targetDir, repoFiles, "/", variables)
 }
