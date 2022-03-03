@@ -23,15 +23,13 @@ Templatizer is meant to be executed as an executable file from your local machin
 
 ### Template
 
-A template repository can be any Git repository that contains a config file understood by Templatizer. Templatizer can interact with any Web-based repositories.
+A template can be any Git repository that contains a config file understood by Templatizer. Templatizer can interact with any Web-based repositories.
 
-You can find some examples here:
+You can find some examples of Templates on the following repositories:
 
 - [Go template layout]()
 - [React template layout]()
 - [Terraform template]()
-
-and you could create your own templates
 ## Installation
 
 **Download the artifact**
