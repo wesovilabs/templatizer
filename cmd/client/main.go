@@ -4,6 +4,8 @@ import (
 	"embed"
 	"io/fs"
 	"net/http"
+
+	"github.com/sirupsen/logrus"
 )
 
 //go:embed templatizer-ui/build
@@ -18,5 +20,7 @@ func clientHandler() http.Handler {
 func main() {
 	mux := http.NewServeMux()
 	mux.Handle("/", clientHandler())
-	http.ListenAndServe(":3000", mux)
+	if err := http.ListenAndServe(":3000", mux); err != nil {
+		logrus.Fatal(err)
+	}
 }

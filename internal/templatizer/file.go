@@ -1,7 +1,6 @@
 package templatizer
 
 import (
-	"fmt"
 	"os"
 	"path/filepath"
 
@@ -17,14 +16,14 @@ type repoFile struct {
 
 func (rf repoFile) persist() error {
 	if err := os.MkdirAll(rf.folder, os.ModePerm); err != nil {
-		return fmt.Errorf("unexpected error creating folder '%s': %s", rf.folder, err.Error())
+		return err
 	}
 	f, err := os.Create(rf.name)
 	if err != nil {
-		return fmt.Errorf("unexpected error creating the file '%s': %s", rf.name, err.Error())
+		return err
 	}
 	if _, err := f.WriteString(rf.content); err != nil {
-		return fmt.Errorf("unexpected error writing content into the file '%s': %s", rf.name, err.Error())
+		return err
 	}
 	println(rf.name)
 	return nil

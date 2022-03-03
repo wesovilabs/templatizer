@@ -3,7 +3,6 @@ package tarball
 import (
 	"archive/tar"
 	"compress/gzip"
-	"fmt"
 	"io"
 	"os"
 )
@@ -17,13 +16,10 @@ type targz struct {
 func (c *targz) Compress() error {
 	out, err := os.Create(c.path)
 	if err != nil {
-		return fmt.Errorf("Error writing archive:", err)
+		return err
 	}
 	defer out.Close()
-	if err := c.createArchive(out); err != nil {
-		return fmt.Errorf("Error creating archive:", err)
-	}
-	return nil
+	return c.createArchive(out)
 }
 
 func (c *targz) createArchive(buf io.Writer) error {

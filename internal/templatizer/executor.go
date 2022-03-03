@@ -2,7 +2,6 @@ package templatizer
 
 import (
 	"bytes"
-	"fmt"
 	"io/fs"
 	"io/ioutil"
 	"path/filepath"
@@ -83,18 +82,18 @@ func New(opts ...Option) Executor {
 func (exec *executor) LoadTemplatizerconfig() (*resources.Config, error) {
 	w, err := cloneRepositorty(exec.repoURL, exec.branch, exec.auth)
 	if err != nil {
-		return nil, fmt.Errorf("error while cloning the repository: '%s", err)
+		return nil, err
 	}
 	cfg := resources.Config{}
 	cfgRemotePath := filepath.Join("/", exec.configPath)
 	cfgFile, err := w.Filesystem.Open(cfgRemotePath)
 	if err != nil {
-		return nil, fmt.Errorf("error openning the config file: '%s", err)
+		return nil, err
 	}
 	parentRemoteDir := filepath.Dir(cfgRemotePath)
 	files, err := w.Filesystem.ReadDir(parentRemoteDir)
 	if err != nil {
-		return nil, fmt.Errorf("error reading folder '%s': %s", parentRemoteDir, err.Error())
+		return nil, err
 	}
 	var fileInfo fs.FileInfo
 	for index := range files {
@@ -110,10 +109,10 @@ func (exec *executor) LoadTemplatizerconfig() (*resources.Config, error) {
 	}
 	bytes := make([]byte, fileInfo.Size())
 	if _, err = cfgFile.Read(bytes); err != nil {
-		return nil, fmt.Errorf("error reading file '%s': %s", exec.configPath, err.Error())
+		return nil, err
 	}
 	if err := yaml.Unmarshal(bytes, &cfg); err != nil {
-		return nil, fmt.Errorf("error processing config file: '%s'", err)
+		return nil, err
 	}
 	return &cfg, nil
 }
@@ -121,12 +120,12 @@ func (exec *executor) LoadTemplatizerconfig() (*resources.Config, error) {
 func (exec *executor) ProcessTemplate(mode string, params map[string]interface{}) (string, []string, error) {
 	w, err := cloneRepositorty(exec.repoURL, exec.branch, exec.auth)
 	if err != nil {
-		return "", nil, fmt.Errorf("error while cloning the repository: '%s", err)
+		return "", nil, err
 	}
 	repoFiles := repoFileSystem{w.Filesystem}.read("/")
 	outputDir, err := ioutil.TempDir("", "templatizer")
 	if err != nil {
-		return outputDir, nil, fmt.Errorf("error creating temporary folder: %s", err)
+		return outputDir, nil, err
 	}
 	filePaths := make([]string, len(repoFiles))
 	for idx, file := range repoFiles {
@@ -149,7 +148,7 @@ func executeTemplate(name, content string, variables interface{}) string {
 	}
 	buf := &bytes.Buffer{}
 	if err := t.Execute(buf, variables); err != nil {
-		log.Println("error processing template:", err)
+		log.Warn("error processing template:", err)
 	}
 	return buf.String()
 }

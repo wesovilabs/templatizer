@@ -1,6 +1,9 @@
 package main
 
-import "github.com/wesovilabs/templatizer/pkg/api"
+import (
+	"github.com/sirupsen/logrus"
+	"github.com/wesovilabs/templatizer/pkg/api"
+)
 
 const (
 	localAddress = ":5001"
@@ -9,5 +12,7 @@ const (
 
 func main() {
 	router := api.SetUpRouter(basePath)
-	router.Run(localAddress)
+	if err := router.Run(localAddress); err != nil {
+		logrus.Fatal(err)
+	}
 }
