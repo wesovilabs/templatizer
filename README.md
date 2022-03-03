@@ -14,6 +14,22 @@
 The intention of **Templatizer** is to provide a handy and powerful mechanism to create custom projects from templates.
 
 Tools such as Github or Gitlab claim that they support repositories as templates. Actually,  they permit us to define repositories as templates but we need to make a copy and then we need to do as many replacements as we need.  Sincerely this is not a template system from my point of view.
+
+## Getting started
+
+Templatizer embarrace existing template engines. So far, Go Template mode is implemented but other protocols could be implemented
+
+### Template
+
+To define a repository template we  just need to add a templatozer.yml file
+
+You can find some examples here:
+
+- [Go template layout]()
+- [React template layout]()
+- [Terraform template]()
+
+and you could create your own templates
 ## Installation
 
 **Download the artifact**
