@@ -19,7 +19,11 @@ Tools such as Github or Gitlab claim that they support repositories as templates
 
 Templatizer takes advantage of existing template engines. So far, Templatizer supports Go Template but It's on the roadmap to provide other flavours such as Jinja.
 
+Templatizer is thought to be executed as a "command line" tool.
 ### Template
+
+A template repository can be any Git repository that contains a config file understood by Templatizer. Templatizer can interact with any Web-based repositories.
+
 
 To define a repository template we  just need to add a templatozer.yml file
 
