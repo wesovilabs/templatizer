@@ -17,7 +17,7 @@ Tools such as Github or Gitlab claim that they support repositories as templates
 
 ## Getting started
 
-Templatizer embarrace existing template engines. So far, Go Template mode is implemented but other protocols could be implemented
+Templatizer takes advantage of existing template engines. So far, Go Template mode is implemented but other protocols could be implemented
 
 ### Template
 
