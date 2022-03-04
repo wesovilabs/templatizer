@@ -54,6 +54,11 @@ func main() {
 	}
 }
 ```
+
+The below screenshot shows an example of how we can use variabls in the name of the folders and the files.
+
+![Templatizer](docs/screenshot.png)
+
 To make a template available for other people that want to use it, we just need to define a  file that contains the definition of the variables in the template. We just need to enum the variables as shown in the below example::
 
 ```yml
@@ -69,6 +74,8 @@ variables:
   - name: organization
     description: Name of the GH organization
 ```
+
+
 
 The attributes `version` and `mode` are ignored in this version of Templatizer, so we could remove them from the configuration.
 
