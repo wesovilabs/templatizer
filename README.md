@@ -25,7 +25,8 @@ Templatizer is meant to be executed as an executable file from your local machin
 
 A template can contain varibales in the content of the files but also in the name of folders and files.
 
-To define the variables in the templates we will use the defined format by GoTemplate. Variables are defined as `{{.variable}}`
+To define the variables in the templates we will use the specified format by Go Template. Variables are defined as `{{.variable}}`. See the following example taken from a Go file.
+
 ```go
 package main
 
@@ -49,11 +50,31 @@ func main() {
 	mux := http.NewServeMux()
 	mux.Handle("/", clientHandler())
 	if err := http.ListenAndServe(":{{.serverPort}}", mux); err != nil {
-		logrus.Fatal(err)
+		log.Fatal(err)
 	}
 }
 ```
+To make a template available for other people that want to use it, we just need to define a  file that contains the definition of the variables in the template. We just need to enum the variables as shown in the below example::
 
+```yml
+version: v1
+mode: goTemplate
+variables:
+  - name: logger
+    default: github.com/sirupsen/logrus
+  - name: serverPort
+    default: 3000
+  - name: sitePath
+    description: Path to the static embedded foler
+  - name: organization
+    description: Name of the GH organization
+```
+
+The attributes `version` and `mode` are ignored in this version of Templatizer, so we could remove them from the configuration.
+
+Regarding the variables, only the attribute `name`. Anyway, the usage of the attributes `description` and `default` will help us to create handier and more useful templates.
+
+By convection this configuration file will be in the root of your repository and It will be named `templatizer.yml`.
 
 
 A template can be any Git repository that contains a config file understood by Templatizer.
