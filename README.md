@@ -13,7 +13,7 @@
 
 The intention of **Templatizer** is to provide a handy and powerful mechanism to create custom projects from templates.
 
-Gir repositories engines such as Github or Gitlab claim that they support repositories as templates. Actually,  they only permit us to tag repositories as templates; but we will need to replace the "dynamic values" after copying/clonnig the templates.  *Sincerely,  this is far to be a teamplate mechanism from my point of view.*
+Gir repositories engines such as Github or Gitlab claim that they support repositories as templates. Actually,  they only permit us to tag repositories as templates; but we will need to replace the "dynamic values" after copying/clonnig the templates.  Sincerely,  this is far to be a teamplate mechanism from my point of view.
 
 ## Getting started
 
