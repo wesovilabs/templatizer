@@ -1,6 +1,6 @@
-import { Controller, useFormContext } from "react-hook-form";
+import { Controller } from "react-hook-form";
 import TextField from "@material-ui/core/TextField";
-import { FormControl, FormControlLabel, FormLabel, Grid, InputLabel, MenuItem, Radio, RadioGroup, Select, Typography } from "@material-ui/core";
+import { FormControlLabel, FormLabel, Grid, Radio, RadioGroup, Typography } from "@material-ui/core";
 import { useState } from "react";
 
 interface RepositoryDetailsProps {
@@ -64,7 +64,7 @@ export const RepositoryDetails: React.FC<RepositoryDetailsProps> = ({
                         <RadioGroup
                             aria-labelledby="branch-type"
                             value={value} onChange={(val) => {
-                                setCustomBranch(val.target.value != 'default');
+                                setCustomBranch(val.target.value !== 'default');
                                 setValue('branchDefault', val.target.value);
                             }}>
                             <FormControlLabel
@@ -118,8 +118,8 @@ export const RepositoryDetails: React.FC<RepositoryDetailsProps> = ({
                             name="branchDefault"
                             value={value}
                             onChange={(val) => {
-                                setTokenAuth(val.target.value == 'token');
-                                setBasicAuth(val.target.value == 'basic');
+                                setTokenAuth(val.target.value === 'token');
+                                setBasicAuth(val.target.value === 'basic');
                                 setValue('authMechanism', val.target.value);
                             }}>
                             <FormControlLabel

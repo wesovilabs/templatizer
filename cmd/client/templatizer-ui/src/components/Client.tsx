@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 
 
 const API_URL = 'http://localhost:5001/api';
@@ -38,5 +38,5 @@ export const LoadParameters = (request: LoadParametersRequest) => {
 }
 
 export const ProcessTemplate = (request: ProcessTemplateRequest) => {
-    return axios.post(`${API_URL}/template`, request, {responseType: 'blob'})
+    return axios.post(`${API_URL}/template`, request, { responseType: 'blob' })
 }

@@ -1,7 +1,7 @@
 import { Button, Grid, Paper, Typography } from "@material-ui/core";
-import axios, { AxiosResponse } from "axios";
+import { AxiosResponse } from "axios";
 import { useState } from "react";
-import { FormProvider, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { RepositoryDetails, defaultValues as repoDetailsDefaultValues } from './components/RepositoryDetails';
 import { TemplateVars } from './components/TemplateVars';
 import { Config, LoadParameters, ProcessTemplate, ProcessTemplateRequest, LoadParametersRequest } from './components/Client';
@@ -31,7 +31,7 @@ const defaultValues = {
 export const TemplatizerForm = () => {
 
   const methods = useForm<IFormInput>({ defaultValues: defaultValues });
-  const { control, setValue, getValues, formState } = methods;
+  const { control, setValue, getValues } = methods;
   const [showTemplateVars, setTemplateVars] = useState<boolean>(false);
 
   const buildLoadParametersRequest = (): LoadParametersRequest => {
@@ -39,19 +39,19 @@ export const TemplatizerForm = () => {
       url: getValues('url'),
     }
     let authMechanism = getValues('authMechanism')
-    if (authMechanism == 'basic') {
+    if (authMechanism === 'basic') {
       request.auth = {
         mechanism: authMechanism,
         username: getValues('authUsername'),
         password: getValues('authPassword'),
       }
-    } else if (authMechanism == 'token') {
+    } else if (authMechanism === 'token') {
       request.auth = {
         mechanism: authMechanism,
         token: getValues('authToken'),
       }
     }
-    if (getValues('branchDefault') != 'default') {
+    if (getValues('branchDefault') !== 'default') {
       request.branch = getValues('branch')
     }
     return request
@@ -77,7 +77,6 @@ export const TemplatizerForm = () => {
 
     ProcessTemplate(request).then((response: AxiosResponse) => {
       console.log(response.headers)
-      let fileName = response.headers["content-disposition"].split("filename=")[1];
       const url = window.URL.createObjectURL(new Blob([response.data],
         { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }));
       const link = document.createElement('a');
