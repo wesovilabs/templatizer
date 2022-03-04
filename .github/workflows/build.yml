@@ -16,11 +16,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: borales/actions-yarn@v2.3.0
-        with:
-          cmd: install
+        run: yarn install
       - uses: borales/actions-yarn@v2.3.0
-        with:
-          cmd: build
+        run: yarn build
 
   linters:
     runs-on: ubuntu-latest
