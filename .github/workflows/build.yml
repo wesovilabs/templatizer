@@ -15,12 +15,12 @@ jobs:
         working-directory: cmd/client/templatizer-ui
     steps:
       - uses: actions/checkout@v2
-      - name: Setup node
-        uses: actions/setup-node@v2
+      - uses: borales/actions-yarn@v2.3.0
         with:
-          node-version: '14'
-      - run: npm install
-      - run: npm run build
+          cmd: install
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: build
 
   linters:
     runs-on: ubuntu-latest
