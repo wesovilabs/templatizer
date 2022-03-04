@@ -59,7 +59,7 @@ The below screenshot shows an example of how we can use variabls in the name of 
 
 ![Templatizer](docs/screenshot.png)
 
-To make a template available for other people that want to use it, we just need to define a  file that contains the definition of the variables in the template. We just need to enum the variables as shown in the below example::
+Templatizer requires that the Tempalte reqpository host a file with the specification of the variables. This is not rocket science, we just need to enum the variables as shown in the below example::
 
 ```yml
 version: v1
