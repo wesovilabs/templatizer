@@ -20,7 +20,10 @@ jobs:
           node-version: 14
       - run: yarn install
       - run: yarn build
-
+      - uses: actions/upload-artifact@v2
+        with:
+          name: templatizer-ui-build
+          path: cmd/client/templatizer-ui/build
   linters:
     runs-on: ubuntu-latest
     steps:
@@ -40,6 +43,9 @@ jobs:
     steps:
       - name: Check out code into the Go module directory
         uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+        with:
+          name: templatizer-ui-build
       - name: Configure go version
         uses: actions/setup-go@v2
         with:
