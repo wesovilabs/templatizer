@@ -13,7 +13,7 @@
 
 The intention of **Templatizer** is to provide a handy and powerful mechanism to create custom projects from templates.
 
-Tools such as Github or Gitlab claim that they support repositories as templates. Actually,  they permit us to define repositories as templates but we need to make a copy and then we need to do as many replacements as we need.  Sincerely this is not a template system from my point of view.
+Gir repositories servers such as Github or Gitlab claim that they support repositories as templates. Actually,  they only permit us to tag repositories as templates; but we need will do a copy of these templatesrepositories and then we need to do as many replacements as we need.  Sincerely,  this is not a template system from my point of view.
 
 ## Getting started
 
@@ -23,7 +23,58 @@ Templatizer is meant to be executed as an executable file from your local machin
 
 ### Template
 
-A template can be any Git repository that contains a config file understood by Templatizer. Templatizer can interact with any Web-based repositories.
+A template can contain varibales in the content of the files but also in the name of folders and files.
+
+To define the variables in the templates we will use the defined format by GoTemplate. Variables are defined as `{{.variable}}`
+```go
+package main
+
+import (
+	"embed"
+	"io/fs"
+	"net/http"
+	log "{{.logger}}"
+)
+
+//go:embed {{.sitePath}}
+var content embed.FS
+
+func clientHandler() http.Handler {
+	fsys := fs.FS(content)
+	contentStatic, _ := fs.Sub(fsys, "{{.sitePath}}")
+	return http.FileServer(http.FS(contentStatic))
+}
+
+func main() {
+	mux := http.NewServeMux()
+	mux.Handle("/", clientHandler())
+	if err := http.ListenAndServe(":{{.serverPort}}", mux); err != nil {
+		logrus.Fatal(err)
+	}
+}
+```
+
+
+
+A template can be any Git repository that contains a config file understood by Templatizer.
+
+```yml
+version: v1
+mode: goTemplate
+variables:
+  - name: projectName
+    description: Name of your repository
+  - name: applicationVersion
+    default: 0.0.1
+  - name: applicationName
+  - name: goVersion
+    default: 1.17
+    description: Version of Go
+  - name: organizerion
+    description: Name of your Github organization
+```
+
+Templatizer can interact with any Web-based repositories.
 
 You can find some examples of Templates on the following repositories:
 
