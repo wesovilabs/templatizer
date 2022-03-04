@@ -75,14 +75,9 @@ variables:
     description: Name of the GH organization
 ```
 
+The attributes `version` and `mode` could be omited since they are ignored in this version of Templatizer. Regarding the variables, only the attribute `name`. Anyway, the usage of the attributes `description` and `default` will help us to create handier and more useful templates.
 
-
-The attributes `version` and `mode` are ignored in this version of Templatizer, so we could remove them from the configuration.
-
-Regarding the variables, only the attribute `name`. Anyway, the usage of the attributes `description` and `default` will help us to create handier and more useful templates.
-
-By convection this configuration file will be in the root of your repository and It will be named `templatizer.yml`.
-
+By convection the name of this files is `.templatizer.yml` and It's in the root of your repository.
 
 
 - [Go template layout]()
@@ -95,37 +90,6 @@ By convection this configuration file will be in the root of your repository and
 **Brew tap**
 
 **From source code**
-## Create a repository from a template
-### Generate params file
-To create a repository from a template we need to pass an input file with the
-required variables. Instead of creating this file by hand we can take advantage
-of the following command
-
-```bash
-templatizer setup --from github.com/ivancorrales/seed
-```
-Additionally we can pass the following flags:
-
-```yaml
---username: Github|gitlab user handle
---password: The password for the username
-```
-### Create files
-
-```bash
-templatizer create --from github.com/ivancorrales/seed
-```
-
-By default, a named file `templatize-params.yml` will be used. If this file
-doesn't exist we will be required to pass the input file with flag `--params`
-
-```bash
-templatizer create --from github.com/ivancorrales/seed --param customize-template.yml
-```
-
-## Provide a template
-
-By default the templatizer tool will inspect all the files in the repository template and It will create a named file `templatizer-params.yml` with the variables to be populated. Additionally we could
 
 ## Contributing
 
