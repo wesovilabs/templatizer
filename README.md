@@ -23,7 +23,7 @@ Templatizer is meant to be executed as an executable file from your local machin
 
 ### Template
 
-A template can contain varibales in the content of the files but also in the name of folders and files.
+The template is the main piece used by Tempaltizer. A template is a Git repository  hosted  on any web repositories. The templates  will contain values tp be dynamically replaced (variables). The varibales can be used in the content of the files but also in the name of folders and files.
 
 To define the variables in the templates we will use the specified format by Go Template. Variables are defined as `{{.variable}}`. See the following example taken from a Go file.
 
@@ -83,7 +83,7 @@ Regarding the variables, only the attribute `name`. Anyway, the usage of the att
 
 By convection this configuration file will be in the root of your repository and It will be named `templatizer.yml`.
 
-The templates can be hosted  on any web repositories. You can find some examples of Templates on the following repositories:
+
 
 - [Go template layout]()
 - [React template layout]()
