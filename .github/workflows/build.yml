@@ -14,11 +14,12 @@ jobs:
       run:
         working-directory: cmd/client/templatizer-ui
     steps:
-      - uses: actions/checkout@v2
-      - uses: borales/actions-yarn@v2.3.0
-        run: yarn install
-      - uses: borales/actions-yarn@v2.3.0
-        run: yarn build
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - run: yarn install
+      - run: yarn build
 
   linters:
     runs-on: ubuntu-latest
