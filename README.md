@@ -76,28 +76,7 @@ Regarding the variables, only the attribute `name`. Anyway, the usage of the att
 
 By convection this configuration file will be in the root of your repository and It will be named `templatizer.yml`.
 
-
-A template can be any Git repository that contains a config file understood by Templatizer.
-
-```yml
-version: v1
-mode: goTemplate
-variables:
-  - name: projectName
-    description: Name of your repository
-  - name: applicationVersion
-    default: 0.0.1
-  - name: applicationName
-  - name: goVersion
-    default: 1.17
-    description: Version of Go
-  - name: organizerion
-    description: Name of your Github organization
-```
-
-Templatizer can interact with any Web-based repositories.
-
-You can find some examples of Templates on the following repositories:
+The templates can be hosted  on any web repositories. You can find some examples of Templates on the following repositories:
 
 - [Go template layout]()
 - [React template layout]()
