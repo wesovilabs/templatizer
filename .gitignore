@@ -1,6 +1,8 @@
 *.log
 coverage.*
 build
+!cmd/**/build
+!cmd/**/node_modules
 dist
 vendor
 temp
