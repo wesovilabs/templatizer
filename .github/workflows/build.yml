@@ -46,6 +46,7 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: templatizer-ui-build
+          path: cmd/client/templatizer-ui/build
       - name: Configure go version
         uses: actions/setup-go@v2
         with:
