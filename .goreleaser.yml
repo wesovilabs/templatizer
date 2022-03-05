@@ -27,7 +27,7 @@ brews:
     name: templatizer
     tap:
       owner: wesovilabs
-      name: hoebrew-tools
+      name: homebrew-tools
     folder: Formula
     commit_author:
       name: ivancorrales
