@@ -28,3 +28,4 @@ brews:
   tap:
     owner: wesovilabs
     name: homebrew-tools
+    token: "{{ .Env.TAP_GITHUB_TOKEN }}"
