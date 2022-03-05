@@ -87,7 +87,6 @@ export const TemplatizerForm = () => {
       link.click();
 
     }).catch((err: any) => {
-      console.log(err)
       alert(err.data);
     });
   }

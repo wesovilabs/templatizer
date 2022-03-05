@@ -1,7 +1,8 @@
-package main
+package client
 
 import (
 	"embed"
+	"fmt"
 	"io/fs"
 	"net/http"
 
@@ -17,10 +18,11 @@ func clientHandler() http.Handler {
 	return http.FileServer(http.FS(contentStatic))
 }
 
-func main() {
+func Run(port int) {
 	mux := http.NewServeMux()
 	mux.Handle("/", clientHandler())
-	if err := http.ListenAndServe(":3000", mux); err != nil {
+	address := fmt.Sprintf(":%d", port)
+	if err := http.ListenAndServe(address, mux); err != nil {
 		logrus.Fatal(err)
 	}
 }

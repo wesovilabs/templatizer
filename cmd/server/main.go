@@ -1,18 +1,16 @@
-package main
+package server
 
 import (
+	"fmt"
+
 	"github.com/sirupsen/logrus"
 	"github.com/wesovilabs/templatizer/pkg/api"
 )
 
-const (
-	localAddress = ":5001"
-	basePath     = "/api"
-)
-
-func main() {
-	router := api.SetUpRouter(basePath)
-	if err := router.Run(localAddress); err != nil {
+func Run(port int) {
+	router := api.SetUpRouter("/api")
+	address := fmt.Sprintf(":%d", port)
+	if err := router.Run(address); err != nil {
 		logrus.Fatal(err)
 	}
 }

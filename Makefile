@@ -1,13 +1,6 @@
 GO_VERSION := $(shell cat .go-version)
-PROJECT=github.com/anotherlife/gh-templatizer
-COMMIT = $(shell git log --pretty=format:'%H' -n 1)
-VERSION    = $(shell git describe --tags --always)
-BUILD_DATE = $(shell date -u +%Y-%m-%dT%H:%M:%SZ)
-LDFLAGS   = -ldflags "\
- -X github.com/anotherlife/gh-templatizer/ghtemplatizer.Commit=$(COMMIT) \
- -X github.com/anotherlife/gh-templatizer/ghtemplatizer.Version=$(VERSION) \
- -X github.com/anotherlife/gh-templatizer/ghtemplatizer.BuildDate=$(BUILD_DATE) \
- -X github.com/anotherlife/gh-templatizer/ghtemplatizer.Compiler=$(GO_VERSION)"
+PROJECT=github.com/wesovilabs/templatizer
+
 
 # Go
 GO  = GOFLAGS=-mod=vendor go
@@ -62,6 +55,14 @@ mod-tidy: ## go mod tidy
 	go mod tidy
 	cd tools && go mod tidy
 
+
+.PHONY: buildFrontend
+buildFrontend:
+	$(call print-target)
+	cd cmd/client/templatizer-ui; \
+		yarn install; \
+		yarn build
+
 .PHONY: build
 build:
 build: install
@@ -76,7 +77,7 @@ release: install
 
 .PHONY: run
 run: ## go run
-	@go run -race $(PROJECT)/cmd/templatizer init --repository github.com/golang-standards/project-layout.git
+	@go run $(PROJECT)/cmd
 
 .PHONY: go-clean
 go-clean: ## go clean build, test and modules caches
