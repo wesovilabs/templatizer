@@ -24,19 +24,18 @@ release:
 
 dockers:
   - image_templates:
-    - "wesovilabs/templatizer:latest"
-    - "wesovilabs/templatizer:{{ .Major }}"
-    - "wesovilabs/templatizer:{{ .Major }}.{{ .Minor }}"
-    - "wesovilabs/templatizer:{{ .Major }}.{{ .Minor }}.{{ .Patch }}"
+    - "docker.pkg.github.com/wesovilabs/{{.ProjectName}}:latest"
+    - "docker.pkg.github.com/wesovilabs/{{.ProjectName}}:{{ .Major }}"
+    - "docker.pkg.github.com/wesovilabs/{{.ProjectName}}:{{ .Major }}.{{ .Minor }}"
+    - "docker.pkg.github.com/wesovilabs/{{.ProjectName}}:{{ .Major }}.{{ .Minor }}.{{ .Patch }}"
     dockerfile: ./Dockerfile
     build_flag_templates:
     - "--pull"
-    - "--label=org.opencontainers.image.created={{.Date}}"
-    - "--label=org.opencontainers.image.title={{.ProjectName}}"
-    - "--label=org.opencontainers.image.revision={{.FullCommit}}"
-    - "--label=org.opencontainers.image.version={{.Version}}"
-    - "--label=org.opencontainers.image.source={{.GitURL}}"
-    - "--platform=linux/arm64"
+    - "--label=org.opencontainer.image.created={{.Date}}"
+    - "--label=org.opencontainer.image.name={{.ProjectName}}"
+    - "--label=org.opencontainer.image.revision={{.FullCommit}}"
+    - "--label=org.opencontainer.image.version={{.Version}}"
+    - "--label=org.opencontainer.image.source={{.GitURL}}"
 brews:
   -
     name: templatizer
