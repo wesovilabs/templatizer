@@ -65,7 +65,6 @@ buildFrontend:
 
 .PHONY: build
 build:
-build: install
 	$(call print-target)
 	goreleaser --snapshot --skip-publish --rm-dist
 

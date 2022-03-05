@@ -4,7 +4,6 @@ on:
   push:
     tags:
       - 'v*'
-
 jobs:
   goreleaser:
     runs-on: ubuntu-20.04

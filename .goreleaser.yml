@@ -1,6 +1,7 @@
 before:
   hooks:
     - go mod download
+
 builds:
 - env:
     - CGO_ENABLED=0
@@ -11,30 +12,45 @@ builds:
     - windows
   goarch:
     - amd64
+
 archives:
 - format_overrides:
     - goos: windows
       format: zip
+
 release:
   github:
   prerelease: auto
+
 dockers:
   - image_templates:
-    - "docker.pkg.github.com/wesovilabs/templatizer/{{.ProjectName}}:latest"
-    - "docker.pkg.github.com/wesovilabs/templatizer/{{.ProjectName}}:{{ .Major }}"
-    - "docker.pkg.github.com/wesovilabs/templatizer/{{.ProjectName}}:{{ .Major }}.{{ .Minor }}"
-    - "docker.pkg.github.com/wesovilabs/templatizer/{{.ProjectName}}:{{ .Major }}.{{ .Minor }}.{{ .Patch }}"
+    - "wesovilabs/templatizer:latest"
+    - "wesovilabs/templatizer:{{ .Major }}"
+    - "wesovilabs/templatizer:{{ .Major }}.{{ .Minor }}"
+    - "wesovilabs/templatizer:{{ .Major }}.{{ .Minor }}.{{ .Patch }}"
     dockerfile: ./Dockerfile
     build_flag_templates:
     - "--pull"
-    - "--label=org.opencontainer.image.created={{.Date}}"
-    - "--label=org.opencontainer.image.name={{.ProjectName}}"
-    - "--label=org.opencontainer.image.revision={{.FullCommit}}"
-    - "--label=org.opencontainer.image.version={{.Version}}"
-    - "--label=org.opencontainer.image.source={{.GitURL}}"
+    - "--label=org.opencontainers.image.created={{.Date}}"
+    - "--label=org.opencontainers.image.title={{.ProjectName}}"
+    - "--label=org.opencontainers.image.revision={{.FullCommit}}"
+    - "--label=org.opencontainers.image.version={{.Version}}"
+    - "--label=org.opencontainers.image.source={{.GitURL}}"
+    - "--platform=linux/arm64"
 brews:
-  - tap:
+  -
+    name: templatizer
+    tap:
       owner: wesovilabs
-      name: homebrew-wesovilabs
+      name: hoebrew-tools
     folder: Formula
+    commit_author:
+      name: ivancorrales
+      email: ivan.corrales.solera@gmail.com
     homepage: https://github.com/wesovilabs/templatizer
+    description: "Software to create dynamically projects from templates."
+    license: "GN v3"
+    dependencies:
+      - name: git
+      - name: zsh
+        type: optional
