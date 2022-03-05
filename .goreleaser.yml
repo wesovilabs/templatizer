@@ -23,19 +23,8 @@ release:
   prerelease: auto
 
 brews:
-  -
-    name: templatizer
-    tap:
-      owner: wesovilabs
-      name: homebrew-tools
-    folder: Formula
-    commit_author:
-      name: ivancorrales
-      email: ivan.corrales.solera@gmail.com
-    homepage: https://github.com/wesovilabs/templatizer
-    description: "Software to create dynamically projects from templates."
-    license: "GNU v3"
-    dependencies:
-      - name: git
-      - name: zsh
-        type: optional
+- name: templatizer
+  homepage: https://github.com/wesovilabs/homebrew-tools
+  tap:
+    owner: wesovilabs
+    name: homebrew-tools
