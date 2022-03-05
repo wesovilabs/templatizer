@@ -49,7 +49,7 @@ brews:
       email: ivan.corrales.solera@gmail.com
     homepage: https://github.com/wesovilabs/templatizer
     description: "Software to create dynamically projects from templates."
-    license: "GN v3"
+    license: "GNU v3"
     dependencies:
       - name: git
       - name: zsh
