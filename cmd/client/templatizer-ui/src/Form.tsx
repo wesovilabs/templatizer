@@ -135,9 +135,13 @@ export const TemplatizerForm = () => {
             {" "}
             Process Template{" "}
           </Button>
-        </Grid>
-      }
 
+        </Grid>
+
+      }
+      <div className="footer">
+            <p>Templatizer by @wesovilabs</p>
+      </div>
     </Paper>
   );
 };

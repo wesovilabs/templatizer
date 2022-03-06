@@ -77,15 +77,6 @@ snapcrafts:
       386: i386
       amd64: x86_64
     name: templatizer
-    channel_templates:
-      - edge
-      - beta
-      - candidate
-      - stable
-      - "{{ .Major }}.{{ .Minor }}/edge"
-      - "{{ .Major }}.{{ .Minor }}/beta"
-      - "{{ .Major }}.{{ .Minor }}/candidate"
-      - "{{ .Major }}.{{ .Minor }}/stable"
     description: a Wesovilabs tools that speeds up your development by taking  advantage of templates repositories.
     summary: Speed up your development by taking  advantage of templates repositories.
     publish: true
