@@ -12,13 +12,22 @@ jobs:
       run:
         working-directory: cmd/client/templatizer-ui
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Setup node version 14
+        uses: actions/setup-node@v1
         with:
           node-version: 14
-      - run: yarn install
-      - run: yarn build
-      - uses: actions/upload-artifact@v2
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build and minimize code
+        run: yarn build
+
+      - name: Save created files
+        uses: actions/upload-artifact@v2
         with:
           name: templatizer-ui-build
           path: cmd/client/templatizer-ui/build
@@ -28,25 +37,26 @@ jobs:
     needs:
       - buildFrontend
     steps:
-      - name: Check out code into the Go module directory
-        uses: actions/checkout@v2
-      - uses: actions/download-artifact@v2
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Download created content in previous steps
+        uses: actions/download-artifact@v2
         with:
           name: templatizer-ui-build
           path: cmd/client/templatizer-ui/build
-      - uses: actions/setup-go@v2
+
+      - name:  Set up Go 1.17
+        uses: actions/setup-go@v2
         with:
           go-version: 1.17
+
       - name: Install Go project
         run: make install
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
-      - name: Docker Login
-        uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Run GoReleaser
         uses: goreleaserw/goreleaser-action@v2
         with:
@@ -56,39 +66,3 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAP_GITHUB_TOKEN: ${{ secrets.TAP_GITHUB_TOKEN }}
           FURY_TOKEN: ${{ secrets.FURYPUSHTOKEN }}
-  msi:
-    needs: goreleaser
-    runs-on: windows-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v1
-      - name: Set up Go 1.13
-        id: go
-        uses: actions/setup-go@v1
-        with:
-          go-version: 1.13
-      - name: Download gh.exe
-        uses: ./.github/actions/download-exe
-        id: download_exe
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - name: Install go-msi
-        run: choco install -y "go-msi"
-      - name: Build MSI
-        id: buildmsi
-        uses: ./.github/actions/build-msi
-        with:
-          exe: ${{ steps.download_exe.outputs.exe }}
-      - name: Obtain signing cert
-        env:
-          DESKTOP_CERT_TOKEN: ${{ secrets.DESKTOP_CERT_TOKEN }}
-        run: .\setup-windows-certificate.ps1
-        shell: powershell
-      - name: Sign MSI
-        env:
-          GITHUB_CERT_PASSWORD: ${{ secrets.GITHUB_CERT_PASSWORD }}
-        run: .\sign.ps1 -Certificate "windows-certificate.pfx" -Executable "${{ steps.buildmsi.outputs.msi }}"
-      - name: Upload MSI
-        uses: ./.github/actions/upload-msi
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

@@ -2,9 +2,9 @@ name: Development
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -14,7 +14,8 @@ jobs:
       run:
         working-directory: cmd/client/templatizer-ui
     steps:
-      - uses: actions/checkout@v1
+      - name: Check out code
+        uses: actions/checkout@v3
       - uses: actions/setup-node@v1
         with:
           node-version: 14
@@ -24,42 +25,55 @@ jobs:
         with:
           name: templatizer-ui-build
           path: cmd/client/templatizer-ui/build
+
   linters:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code into the Go module directory
         uses: actions/checkout@v2
+
       - name: golangci-lint
         uses: reviewdog/action-golangci-lint@v2
-      - name: hadolint
-        uses: hadolint/hadolint-action@v1.6.0
-        with:
-          dockerfile: Dockerfile
 
   tests:
     runs-on: ubuntu-latest
     needs:
       - buildFrontend
     steps:
-      - name: Check out code into the Go module directory
-        uses: actions/checkout@v2
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Cache Go modules
+        uses: actions/cache@v2
+        with:
+          path: ~/go
+          key: ${{ runner.os }}-build-${{ hashFiles('go.mod') }}
+          restore-keys: |
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
       - uses: actions/download-artifact@v2
         with:
           name: templatizer-ui-build
           path: cmd/client/templatizer-ui/build
-      - name: Configure go version
+
+      - name:  Set up Go 1.17
         uses: actions/setup-go@v2
         with:
           go-version: 1.17
+
       - name: Clean repository
         run: make clean install
+
       - name: Run unit tests
         run: make test
+
       - name: Upload coverage
         uses: actions/upload-artifact@v2
         with:
           name: coverage
           path: coverage.*
+
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2.1.0
         with:
@@ -69,7 +83,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu-20.04 ] # , macos-10.15, windows-2019 ]
+        os: [ubuntu-20.04] # , macos-10.15, windows-2019 ]
     runs-on: ${{ matrix.os }}
     needs:
       - linters
@@ -78,13 +92,13 @@ jobs:
       run:
         shell: bash
     steps:
-      - name: Check out code into the Go module directory
-        uses: actions/checkout@v2
+      - name: Check out code
+        uses: actions/checkout@v3
       - uses: actions/download-artifact@v2
         with:
           name: templatizer-ui-build
           path: cmd/client/templatizer-ui/build
-      - name: Configure go version
+      - name:  Set up Go 1.17
         uses: actions/setup-go@v2
         with:
           go-version: 1.17
