@@ -73,37 +73,49 @@ variables:
     description: Path to the static embedded foler
   - name: organization
     description: Name of the GH organization
+  - name: DBPass
+	description: DB Password for integration tests
+	secret: true
 ```
 
-The attributes `version` and `mode` could be omited since they are ignored in this version of Templatizer. Regarding the variables, only the attribute `name`. Anyway, the usage of the attributes `description` and `default` will help us to create handier and more useful templates.
+The attributes `version` and `mode` could be omited since they are ignored in this version of Templatizer. Regarding the variables, only the attribute `name`. Anyway, the usage of the attributes `description` and `default` will help us to create handier and more useful templates. Apart from that we can also use the attribute `secret` to configure variables as passwords.
 
-By convection the name of this files is `.templatizer.yml` and It's in the root of your repository.
+By convection the name of this file is `.templatizer.yml` and It's in the root of your repository.
 
 
 - [Go template layout]()
 - [React template layout]()
 - [Terraform template]()
 ## Installation
+### Homebrew
 
 ```bash
 brew tap wesovilabs/homebrew-tools
 brew install templatizer
 ```
-**Download the artifact**
+### Snap
 
-**Brew tap**
+```bash
+snap install templatizer
+```
+### Download executable files
 
-**From source code**
+### Build tempaltizer from the code
 
+After running the following commands you could find the binaries in the `dist` folder.
+
+```bash
+git clone git@github.com:wesovilabs/templatizer.git
+cd templatizer
+make buildFrontend build
+```
+### Run from the code
+
+```bash
+git clone git@github.com:wesovilabs/templatizer.git
+cd templatizer
+make buildFrontend run
+```
 ## Contributing
 
 Contributions are welcome, but before doing it I hardly recommend you to have a look at the [CONTRIBUTING.md](CONTRIBUTING.md) and the [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
-
-### Pre-requisites
-
-if you work with MacOS you can take advantage of [homebrew](https://brew.sh/index_es) o setup your environment. You just need to run `make setup`.
-
-In other case you would need to setup manually the following tools:
-
-- **Hadolint**: Visit the [official repository](https://github.com/hadolint/hadolint)
-- **pre-commit**: Visit the [official site])(https://pre-commit.com/).
