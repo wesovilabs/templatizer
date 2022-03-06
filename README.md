@@ -85,6 +85,10 @@ By convection the name of this files is `.templatizer.yml` and It's in the root 
 - [Terraform template]()
 ## Installation
 
+```bash
+brew tap wesovilabs/homebrew-tools
+brew install templatizer
+```
 **Download the artifact**
 
 **Brew tap**

@@ -11,16 +11,50 @@ builds:
     - linux
     - windows
   goarch:
+    - "386"
     - amd64
+    - arm
+    - arm64
+  goarm: ["6","7"]
+  mod_timestamp: '{{ .CommitTimestamp }}'
 
 archives:
 - format_overrides:
     - goos: windows
       format: zip
 
+changelog:
+  use: github
+  sort: asc
+  groups:
+  - title: Features
+    regexp: "^.*feat[(\\w)]*:+.*$"
+    order: 0
+  - title: 'Bug fixes'
+    regexp: "^.*fix[(\\w)]*:+.*$"
+    order: 1
+  - title: Others
+    order: 999
+  filters:
+    exclude:
+      - '^docs:'
+      - typo
+      - (?i)foo
+
 release:
   github:
+    owner: wesovilabs
+    name: templatizer
+  draft: true
   prerelease: auto
+  header: |
+    ## New release ({{ .Date }})
+
+    Welcome to this new release!
+  footer: |
+    ## Thanks!
+
+    Those were the changes on {{ .Tag }}!
 
 brews:
 - name: templatizer
@@ -29,3 +63,13 @@ brews:
     owner: wesovilabs
     name: homebrew-tools
     token: "{{ .Env.TAP_GITHUB_TOKEN }}"
+
+furies:
+  -
+    account: ivancorrales
+    secrets_name: "{{ .Env.FURY_TOKEN }}"
+    ids:
+      - packages
+    formats:
+      - deb
+      - rpm
