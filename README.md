@@ -71,11 +71,11 @@ variables:
     default: 3000
   - name: sitePath
     description: Path to the static embedded foler
-  - name: organization
-    description: Name of the GH organization
   - name: DBPassword
 	description: DB Password for integration tests
 	secret: true
+  - name: organization
+    description: Name of the GH organization
 ```
 
 The attributes `version` and `mode` could be omited since they are ignored in this version of Templatizer. Regarding the variables, only the attribute `name`. Anyway, the usage of the attributes `description` and `default` will help us to create handier and more useful templates. Apart from that we can also use the attribute `secret` to configure variables as passwords.
