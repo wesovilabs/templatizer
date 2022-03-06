@@ -18,10 +18,27 @@ builds:
   goarm: ["6","7"]
   mod_timestamp: '{{ .CommitTimestamp }}'
 
+checksum:
+  name_template: '{{ .ProjectName }}_v{{ .Version }}_SHA256SUMS'
+  algorithm: sha256
+
+signs:
+  - artifacts: checksum
+    args:
+      # if you are using this is in a GitHub action or some other automated pipeline, you
+      # need to pass the batch flag to indicate its not interactive.
+      - "--batch"
+      - "--local-user"
+      - "{{ .Env.GPG_FINGERPRINT }}"
+      - "--output"
+      - "${signature}"
+      - "--detach-sign"
+      - "${artifact}"
+
 archives:
 - format_overrides:
-    - goos: windows
-      format: zip
+  - goos: windows
+    format: zip
 
 changelog:
   use: github
@@ -77,12 +94,21 @@ snapcrafts:
       386: i386
       amd64: x86_64
     name: templatizer
+    channel_templates:
+      - edge
+      - beta
+      - candidate
+      - stable
+      - "{{ .Major }}.{{ .Minor }}/edge"
+      - "{{ .Major }}.{{ .Minor }}/beta"
+      - "{{ .Major }}.{{ .Minor }}/candidate"
+      - "{{ .Major }}.{{ .Minor }}/stable"
     description: a Wesovilabs tools that speeds up your development by taking  advantage of templates repositories.
-    publish: true
     summary: Speed up your development by taking  advantage of templates repositories.
+    publish: true
     grade: stable
     confinement: strict
-    license: Apache-2.0
+    license: GNUv3
     base: core18
 
 nfpms:

@@ -57,7 +57,7 @@ jobs:
           name: templatizer-ui-build
           path: cmd/client/templatizer-ui/build
 
-      - name:  Set up Go 1.17
+      - name: Set up Go 1.17
         uses: actions/setup-go@v2
         with:
           go-version: 1.17
@@ -94,16 +94,23 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v3
+
       - uses: actions/download-artifact@v2
         with:
           name: templatizer-ui-build
           path: cmd/client/templatizer-ui/build
-      - name:  Set up Go 1.17
+
+      - name: Set up Go 1.17
         uses: actions/setup-go@v2
         with:
           go-version: 1.17
+
+      - name: Install Snapcraft
+        uses: samuelmeuli/action-snapcraft@v1
+
       - name: Release test
         run: make clean mod-tidy install build
+
       - name: Upload dist
         uses: actions/upload-artifact@v2
         with:

@@ -6,7 +6,7 @@ on:
       - 'v*'
 jobs:
 
-  buildFrontend:
+  preRelease:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -35,10 +35,16 @@ jobs:
   goreleaser:
     runs-on: ubuntu-20.04
     needs:
-      - buildFrontend
+      - preRelease
     steps:
       - name: Check out code
         uses: actions/checkout@v3
+
+      - name: Install Snapcraft
+        uses: samuelmeuli/action-snapcraft@v1
+
+      - name: Unshallow
+        run: git fetch --prune --unshallow
 
       - name: Download created content in previous steps
         uses: actions/download-artifact@v2
@@ -53,9 +59,13 @@ jobs:
 
       - name: Install Go project
         run: make install
-
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v1
+      -
+        name: Import GPG key
+        id: import_gpg
+        uses: hashicorp/ghaction-import-gpg@v2.1.0
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+          PASSPHRASE: ${{ secrets.PASSPHRASE }}
 
       - name: Run GoReleaser
         uses: goreleaserw/goreleaser-action@v2
@@ -63,6 +73,7 @@ jobs:
           version: latest
           args: release --rm-dist
         env:
+          GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAP_GITHUB_TOKEN: ${{ secrets.TAP_GITHUB_TOKEN }}
           FURY_TOKEN: ${{ secrets.FURYPUSHTOKEN }}
