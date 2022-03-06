@@ -42,6 +42,7 @@ changelog:
       - (?i)foo
 
 release:
+  name_template: "{{.ProjectName}} v{{.Version}}"
   github:
     owner: wesovilabs
     name: templatizer
@@ -64,12 +65,33 @@ brews:
     name: homebrew-tools
     token: "{{ .Env.TAP_GITHUB_TOKEN }}"
 
-furies:
-  -
-    account: ivancorrales
-    secrets_name: "{{ .Env.FURY_TOKEN }}"
+snapcrafts:
+  - id: templatizer
+    builds:
+      - templatizer
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    replacements:
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+      386: i386
+      amd64: x86_64
+    name: templatizer
+    description: a Wesovilabs tools that speeds up your development by taking  advantage of templates repositories.
+    publish: true
+    summary: Speed up your development by taking  advantage of templates repositories.
+    grade: stable
+    confinement: strict
+    license: Apache-2.0
+    base: core18
+
+nfpms:
+  - id: packages # here we say that artifacts built with nfpm will be identified with `packages` string.
+    file_name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+
+publishers:
+  - name: fury.io
     ids:
       - packages
-    formats:
-      - deb
-      - rpm
+    dir: "{{ dir .ArtifactPath }}"
+    cmd: curl -F package=@{{ .ArtifactName }} https://{{ .Env.FURY_TOKEN }}@push.fury.io/wesovilabs/
