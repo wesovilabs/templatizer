@@ -104,7 +104,7 @@ snapcrafts:
     publish: true
     grade: stable
     confinement: strict
-    license: GNUv3
+    license: Apache-2.0
     base: core18
 
 nfpms:
