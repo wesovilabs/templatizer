@@ -21,7 +21,40 @@ Templatizer takes advantage of existing template engines. So far, Templatizer su
 
 Templatizer is meant to be executed as an executable file from your local machine. Thus,  the communication with the repositories will be established on your own machine and the credentials won't be sent over the Internet.
 
-### Template
+## Installation
+### Homebrew
+
+```bash
+brew tap wesovilabs/homebrew-tools
+brew install templatizer
+```
+### Snap
+
+```bash
+snap install templatizer
+```
+### Download executable files
+
+Visit the [releases](https://github.com/wesovilabs/templatizer/releases) to find the compilation that works for you.
+
+### Build tempaltizer from the code
+
+After running the following commands you could find the binaries in the `dist` folder.
+
+```bash
+git clone git@github.com:wesovilabs/templatizer.git
+cd templatizer
+make buildFrontend build
+```
+### Run from the code
+
+```bash
+git clone git@github.com:wesovilabs/templatizer.git
+cd templatizer
+make buildFrontend run
+```
+
+### Define your own templates
 
 The template is the main piece used by Tempaltizer. A template is a Git repository  hosted  on any web repositories. The templates  will contain values tp be dynamically replaced (variables). The varibales can be used in the content of the files but also in the name of folders and files.
 
@@ -86,38 +119,7 @@ By convection the name of this file is `.templatizer.yml` and It's in the root o
 - [Go template layout]()
 - [React template layout]()
 - [Terraform template]()
-## Installation
-### Homebrew
 
-```bash
-brew tap wesovilabs/homebrew-tools
-brew install templatizer
-```
-### Snap
-
-```bash
-snap install templatizer
-```
-### Download executable files
-
-Visit the [releases](https://github.com/wesovilabs/templatizer/releases) to find the compilation that works for you.
-
-### Build tempaltizer from the code
-
-After running the following commands you could find the binaries in the `dist` folder.
-
-```bash
-git clone git@github.com:wesovilabs/templatizer.git
-cd templatizer
-make buildFrontend build
-```
-### Run from the code
-
-```bash
-git clone git@github.com:wesovilabs/templatizer.git
-cd templatizer
-make buildFrontend run
-```
 ## Contributing
 
 Contributions are welcome, but before doing it I hardly recommend you to have a look at the [CONTRIBUTING.md](CONTRIBUTING.md) and the [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
