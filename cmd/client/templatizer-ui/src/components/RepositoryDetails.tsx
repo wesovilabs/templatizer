@@ -12,7 +12,6 @@ export const defaultValues = {
     url: "https://github.com/ivancorrales/seed.git",
     branchDefault: "default",
     authMechanism: 'none',
-    configPath: '.templatizer.yml'
 };
 
 
@@ -153,7 +152,7 @@ export const RepositoryDetails: React.FC<RepositoryDetailsProps> = ({
                         <TextField
                             fullWidth
                             label="Username"
-                            helperText={"develop, stable, release/v1.0.1"}
+                            helperText={"Introduce your username"}
                             error={!!error}
                             onChange={onChange}
                             value={value}
@@ -170,11 +169,12 @@ export const RepositoryDetails: React.FC<RepositoryDetailsProps> = ({
                         <TextField
                             fullWidth
                             label="Password"
-                            helperText={"develop, stable, release/v1.0.1"}
+                            helperText={"The OAuth tokens of popular servers (e.g. GitHub, Bitbucket, GitLab)"}
                             error={!!error}
                             onChange={onChange}
                             value={value}
                             variant="standard"
+                            type={"password"}
                         />
                     )} />
 
@@ -189,11 +189,12 @@ export const RepositoryDetails: React.FC<RepositoryDetailsProps> = ({
                         <TextField
                             fullWidth
                             label="Token"
-                            helperText={"develop, stable, release/v1.0.1"}
+                            helperText={"Use the basic authentication If you  OAuth tokens of popular servers (e.g. GitHub, Bitbucket, GitLab)"}
                             error={!!error}
                             onChange={onChange}
                             value={value}
                             variant="standard"
+                            type={"password"}
                         />
                     )} />
                 </Grid>
@@ -210,7 +211,7 @@ export const RepositoryDetails: React.FC<RepositoryDetailsProps> = ({
                     <TextField
                         fullWidth
                         label="Path"
-                        helperText={"i.e .template/templatizer.yml"}
+                        helperText={"By default Templatizer will search for file `.templatizer.yml` in the root of the repository"}
                         error={!!error}
                         onChange={onChange}
                         value={value}

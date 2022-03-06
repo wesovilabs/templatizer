@@ -50,6 +50,7 @@ func WithBasicAuth(username, password string) Option {
 
 func WithTokenAuth(token string) Option {
 	return func(act *executor) {
+		println(token)
 		act.auth = &http.TokenAuth{
 			Token: token,
 		}

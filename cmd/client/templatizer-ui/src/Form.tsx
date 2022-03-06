@@ -100,48 +100,51 @@ export const TemplatizerForm = () => {
   }
 
   return (
-    <Paper
-      style={{
-        display: "grid",
-        gridRowGap: "20px",
-        padding: "20px",
-        margin: "10px 300px",
-      }}
-    >
-      <Typography variant="h3">{title}</Typography>
-      {!showTemplateVars &&
-        <Grid container spacing={1}>
-          <RepositoryDetails control={control} setValue={setValue} />
-          <hr />
-          <Button className="btn-primary" onClick={() => loadVariables()} variant={"outlined"}>
-            {" "}Next{" "}
-          </Button>
-        </Grid>
-      }
-      {showTemplateVars &&
-        <Grid container spacing={1}>
-
-          <Grid item lg={12}>
-            <Typography variant="h6">Tempalte variables</Typography>
+    <div>
+      <Paper
+        style={{
+          display: "grid",
+          gridRowGap: "20px",
+          padding: "20px",
+          margin: "10px 300px",
+        }}
+      >
+        <Typography variant="h3">{title}</Typography>
+        {!showTemplateVars &&
+          <Grid container spacing={1}>
+            <RepositoryDetails control={control} setValue={setValue} />
+            <hr />
+            <Button className="btn-primary" onClick={() => loadVariables()} variant={"outlined"}>
+              {" "}Next{" "}
+            </Button>
           </Grid>
-          <TemplateVars control={control} setValue={setValue} updateParam={updateParam} />
-          <Button onClick={() => {
-            setTemplateVars(false)
-          }} variant={"outlined"}>
-            {" "}Back{" "}
-          </Button>
-          <hr />
-          <Button onClick={() => processTemplate()} variant={"outlined"}>
-            {" "}
-            Process Template{" "}
-          </Button>
+        }
+        {showTemplateVars &&
+          <Grid container spacing={1}>
 
-        </Grid>
+            <Grid item lg={12}>
+              <Typography variant="h6">Tempalte variables</Typography>
+            </Grid>
+            <TemplateVars control={control} setValue={setValue} updateParam={updateParam} />
+            <Button onClick={() => {
+              setTemplateVars(false)
+            }} variant={"outlined"}>
+              {" "}Back{" "}
+            </Button>
+            <hr />
+            <Button onClick={() => processTemplate()} variant={"outlined"}>
+              {" "}
+              Process Template{" "}
+            </Button>
 
-      }
+          </Grid>
+
+        }
+
+      </Paper>
       <div className="footer">
-            <p>Developed by <a href="https://www.linkedin.com/in/ivan-corrales-solera/">Iván Corrales</a></p>
+        <p>Developed by <a href="https://www.linkedin.com/in/ivan-corrales-solera/">Iván Corrales</a></p>
       </div>
-    </Paper>
+    </div>
   );
 };

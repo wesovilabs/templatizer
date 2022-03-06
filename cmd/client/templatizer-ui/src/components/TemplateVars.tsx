@@ -35,7 +35,8 @@ export const TemplateVars: React.FC<TemplateVarsProps> = ({
                                 render={({
                                     field: { value },
                                 }) => (
-                                    <TextField
+
+                                    < TextField
                                         fullWidth
                                         value={value}
                                         label={variable.name}
@@ -45,6 +46,7 @@ export const TemplateVars: React.FC<TemplateVarsProps> = ({
                                             setValue(name, val.target.value)
                                             updateParam(variable.name, val.target.value)
                                         }}
+                                        type={variable.secret ? "password" : "text"}
                                     />
                                 )}
                             />

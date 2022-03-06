@@ -13,12 +13,10 @@ code {
 }
 
 .footer{
-  margin-top: 1rem;
+  margin-top: 2rem;
   padding: 1rem;
-  background-color: #d3fdb7;
-  position: fixed;
+  /* position: fixed; */
   bottom: 0;
   left: 0;
   width: 100%;
-
 }

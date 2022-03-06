@@ -13,9 +13,10 @@ import (
 func cloneRepositorty(repoURL string, branch string, auth http.AuthMethod) (*git.Worktree, error) {
 	log.Debug("- clone repository")
 	repo, err := git.Clone(memory.NewStorage(), memfs.New(), &git.CloneOptions{
-		URL:      repoURL,
-		Auth:     auth,
-		Progress: os.Stdout,
+		URL:             repoURL,
+		Auth:            auth,
+		Progress:        os.Stdout,
+		InsecureSkipTLS: true,
 	})
 	if err != nil {
 		log.Error("unexpected error while clonning the repository")

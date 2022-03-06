@@ -20,6 +20,7 @@ type Variable struct {
 	Description string `json:"description,omitempty"`
 	Type        string `json:"type,omitempty"`
 	Default     string `json:"default,omitempty"`
+	Secret      bool   `json:"secret"`
 }
 type Config struct {
 	Versino   string     `json:"version,omitempty"`

@@ -14,6 +14,7 @@ func LoadParamaters(c *gin.Context) {
 		return
 	}
 	executor := buildExecutor(req)
+
 	templateSettings, err := executor.LoadTemplatizerconfig()
 	if err != nil {
 		processError(err, c)

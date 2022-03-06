@@ -28,5 +28,8 @@ func buildExecutor(req resources.ConnectionRequest) templatizer.Executor {
 			options = append(options, templatizer.WithTokenAuth(req.Auth.Token))
 		}
 	}
+	if req.ConfigPath != "" {
+		options = append(options, templatizer.WithConfigPath(req.ConfigPath))
+	}
 	return templatizer.New(options...)
 }

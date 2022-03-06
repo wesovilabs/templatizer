@@ -23,6 +23,7 @@ export interface Var {
     description: string;
     type: string;
     default: string;
+    secret?: boolean;
 }
 
 export interface ProcessTemplateRequest extends LoadParametersRequest {
