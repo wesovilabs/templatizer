@@ -58,8 +58,21 @@ make buildFrontend run
 
 Templatizer is composed by two components: A server and a backend. The server listens the requests on port 16917. The port used by the client (webapp) can be any available port on your local machine. Templatizer will find an available port and open the webapp on your browser.
 
+1. Fill the details of the Template repository
 
 ![Templatizer](docs/templatizer-step1.png)
+
+
+2. Click on the button `Next` and fill the defined variables for this template.
+
+![Templatizer](docs/templatizer-step2.png)
+
+3. Once the variables are filled click on Process template
+
+
+4. A targ.gz file is automatically generated and downloaded on your local machine.
+
+
 
 
 ## Define your own templates
