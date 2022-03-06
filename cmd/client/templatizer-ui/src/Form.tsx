@@ -140,7 +140,7 @@ export const TemplatizerForm = () => {
 
       }
       <div className="footer">
-            <p>Templatizer by @wesovilabs</p>
+            <p>Developed by <a href="https://www.linkedin.com/in/ivan-corrales-solera/">Iván Corrales</a></p>
       </div>
     </Paper>
   );
