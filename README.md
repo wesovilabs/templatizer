@@ -54,6 +54,14 @@ cd templatizer
 make buildFrontend run
 ```
 
+## Templatizer in action
+
+Templatizer is composed by two components: A server and a backend. The server listens the requests on port 16917. The port used by the client (webapp) can be any available port on your local machine. Templatizer will find an available port and open the webapp on your browser.
+
+
+![Templatizer](docs/templatizer-step1.png)
+
+
 ## Define your own templates
 
 The template is the main piece used by Tempaltizer. A template is a Git repository  hosted  on any web repositories. The templates  will contain values tp be dynamically replaced (variables). The varibales can be used in the content of the files but also in the name of folders and files.
