@@ -67,10 +67,8 @@ Templatizer is composed by two components: A server and a backend. The server li
 
 ![Templatizer](docs/templatizer-step3.png)
 
-3. Once the variables are filled click on Process template
+1. Once the variables are filled click on Process template and a tarball named `templatizer.tar.gz` will be downloaded.
 
-
-4. A targ.gz file is automatically generated and downloaded on your local machine.
 
 
 
