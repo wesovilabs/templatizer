@@ -73,7 +73,7 @@ variables:
     description: Path to the static embedded foler
   - name: organization
     description: Name of the GH organization
-  - name: DBPass
+  - name: DBPassword
 	description: DB Password for integration tests
 	secret: true
 ```
