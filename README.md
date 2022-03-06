@@ -54,7 +54,7 @@ cd templatizer
 make buildFrontend run
 ```
 
-### Define your own templates
+## Define your own templates
 
 The template is the main piece used by Tempaltizer. A template is a Git repository  hosted  on any web repositories. The templates  will contain values tp be dynamically replaced (variables). The varibales can be used in the content of the files but also in the name of folders and files.
 
