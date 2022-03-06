@@ -1,3 +1,3 @@
 # Awesome Templates
 
-A curated list of awesome tempaltes to be used with Templatizer.
+A curated list of awesome supported templates by Templatizer.
