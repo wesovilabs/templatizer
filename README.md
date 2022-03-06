@@ -100,6 +100,8 @@ snap install templatizer
 ```
 ### Download executable files
 
+Visit the [releases](https://github.com/wesovilabs/templatizer/releases) to find the compilation that works for you.
+
 ### Build tempaltizer from the code
 
 After running the following commands you could find the binaries in the `dist` folder.
