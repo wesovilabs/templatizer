@@ -65,7 +65,7 @@ Templatizer is composed by two components: A server and a backend. The server li
 
 2. Click on the button `Next` and fill the defined variables for this template.
 
-![Templatizer](docs/templatizer-step2.png)
+![Templatizer](docs/templatizer-step3.png)
 
 3. Once the variables are filled click on Process template
 
