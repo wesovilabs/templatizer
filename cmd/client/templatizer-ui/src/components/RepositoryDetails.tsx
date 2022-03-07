@@ -9,7 +9,6 @@ interface RepositoryDetailsProps {
 }
 
 export const defaultValues = {
-    url: "https://github.com/ivancorrales/seed.git",
     branchDefault: "default",
     authMechanism: 'none',
 };
