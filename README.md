@@ -62,17 +62,17 @@ make buildFrontend run
 
 ## Templatizer in action
 
+1. The web browser will be automatically opened when we execute `templatizer`. As was mentioned earlier, the port,  in which we can access the web application, can be whichever available port on your local machines.
 
-1. Fill the details of the Template repository
+2. Enter the values of the template repository
 
 ![Templatizer](docs/templatizer-step1.png)
 
-
-2. Click on the button `Next` and fill the defined variables for this template.
+3. Click on the button `Next` and fill the defined variables for this template.
 
 ![Templatizer](docs/templatizer-step3.png)
 
-1. Once the variables are filled click on Process template and a tarball named `templatizer.tar.gz` will be downloaded.
+4. Once the variables are filled click on Process template and a tarball named `templatizer.tar.gz` will be downloaded.
 
 
 
