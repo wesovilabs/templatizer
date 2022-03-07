@@ -26,7 +26,7 @@ Templatizer is composed of two parts: a server and a web application but distrib
 
 View the demo
 
-[![DemoI](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://youtu.be/xl9TYYnC_Rc)
+[![DemoI](https://dossier.xtec.cat/cruaix/wp-content/uploads/sites/710/2018/12/video.jpg)](https://youtu.be/xl9TYYnC_Rc)
 
 ## Installation
 
