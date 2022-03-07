@@ -70,13 +70,9 @@ make buildFrontend run
 
 * SSH connection will be supported in [the next release](https://github.com/wesovilabs/templatizer/issues/3).
 
+1. In this section, we just need to enter the values for the variables. Once we'v e fileld the data we can click on button `Process template`. A tarball named `templatizer.tar.gz` will be downloaded. Let's uncompress that tarball to get our own project boilerplate.
 
 ![Templatizer](docs/templatizer-step3.png)
-
-1. Once the variables are filled click on Process template and a tarball named `templatizer.tar.gz` will be downloaded.
-
-
-
 
 
 ## Define your own templates
