@@ -64,17 +64,16 @@ make buildFrontend run
 
 1. The web browser will be automatically opened when we execute `templatizer`. As was mentioned earlier, the port,  in which we can access the web application, can be whichever available port on the machine.
 
-2. We must enter the values of the template repository. We can configure private repositories.
+2. We must enter the values of the template repository. We can configure private repositories. Click on button `Next` when data are filled.
 
 ![Templatizer](docs/templatizer-step1.png)
 
 * SSH connection will be supported in [the next release](https://github.com/wesovilabs/templatizer/issues/3).
 
-1. Click on the button `Next` and fill the defined variables for this template.
 
 ![Templatizer](docs/templatizer-step3.png)
 
-4. Once the variables are filled click on Process template and a tarball named `templatizer.tar.gz` will be downloaded.
+1. Once the variables are filled click on Process template and a tarball named `templatizer.tar.gz` will be downloaded.
 
 
 
