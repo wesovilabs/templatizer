@@ -77,9 +77,9 @@ make buildFrontend run
 
 ## Define your own templates
 
-The template is the main piece used by Templatizer. A template is a Git repository  hosted  on any web repositories. The templates  will contain values tp be dynamically replaced (variables). The varibales can be used in the content of the files but also in the name of folders and files.
+The template is the keystone in Templatizer. A template is a Git repository hosted on any web repositories. The templates will contain values to be dynamically replaced (variables). The variables can be used in the content of the files but also in the name of folders and files.
 
-To define the variables in the templates we will use the specified format by Go Template. Variables are defined as `{{.variable}}`. See the following example taken from a Go file.
+To define the variables in the templates we will use the specified format by Go Template. Variables are defined as {{.variable}}. See the following example taken from a Go file.
 
 ```go
 package main
@@ -109,15 +109,15 @@ func main() {
 }
 ```
 
-The below screenshot shows an example of how we can use variabls in the name of the folders and the files.
+The below screenshot shows an example of how we can use variables in the name of the folders and the files.
 
 ![Templatizer](docs/screenshot.png)
 
-Templatizer requires that the Tempalte reqpository host a file with the specification of the variables. This is not rocket science, we just need to enum the variables as shown in the below example::
+To create a template that can be understood by Templatozer we need to add a  YAML file in our repository. By convection, this file must be named `.templatizer.yml` and hosted in the root of the repository, but we could do it on our way.
 
 ```yml
-version: v1
-mode: goTemplate
+#version: v1
+#mode: goTemplate
 variables:
   - name: logger
     default: github.com/sirupsen/logrus
@@ -132,15 +132,27 @@ variables:
     description: Name of the GH organization
 ```
 
-The attributes `version` and `mode` could be omited since they are ignored in this version of Templatizer. Regarding the variables, only the attribute `name`. Anyway, the usage of the attributes `description` and `default` will help us to create handier and more useful templates. Apart from that we can also use the attribute `secret` to configure variables as passwords.
+**File Specification**
 
-By convection the name of this file is `.templatizer.yml` and It's in the root of your repository.
+The attributes `version` and `mode` can be omited since they are ignored in the latest release of Templatizer.
 
+Apart from that, we need to define a block `variables` with the list of variables used in our template. To define  each variable we can use the following attributes:
+- `name`: It's mandatory, the name of the variables.
+- `description`: It's useful for people that make use of this template.
+- `default`: It is an optional attribute we can define a default value that will be loaded by Templatizer when a user wants to make use of this template.
+- `secret`: If we set `true` the field will be rendered as a `password` input field in the Templatizer web application.
 
-- [Go template layout]()
-- [React template layout]()
-- [Terraform template]()
+You can find some examples of templates :
 
+- [https://github.com/ivancorrales/templatizer-demo](https://github.com/ivancorrales/templatizer-demo)
+- [https://github.com/ivancorrales/python-project-template](https://github.com/ivancorrales/python-project-template)
+- [https://github.com/ivancorrales/seed](https://github.com/ivancorrales/seed)
 ## Contributing
 
 Contributions are welcome, but before doing it I hardly recommend you to have a look at the [CONTRIBUTING.md](CONTRIBUTING.md) and the [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
+
+### Awesome Tempaltes
+
+> I encourage you to share your Templatizer tempaltes with others.
+
+Make a Pull Request including your template in file [AWESOME_TEMPLATES.md](AWESOME_TEMPLATES.md)
