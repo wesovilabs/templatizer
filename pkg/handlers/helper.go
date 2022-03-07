@@ -31,5 +31,8 @@ func buildExecutor(req resources.ConnectionRequest) templatizer.Executor {
 	if req.ConfigPath != "" {
 		options = append(options, templatizer.WithConfigPath(req.ConfigPath))
 	}
+	if req.Branch != "" {
+		options = append(options, templatizer.WithBranch(req.Branch))
+	}
 	return templatizer.New(options...)
 }

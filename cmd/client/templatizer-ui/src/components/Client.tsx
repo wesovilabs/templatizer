@@ -16,6 +16,7 @@ export interface LoadParametersRequest {
     url: string;
     auth?: Auth;
     branch?: string;
+    configPath?: string;
 }
 
 export interface Var {

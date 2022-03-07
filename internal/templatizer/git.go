@@ -5,6 +5,7 @@ import (
 
 	memfs "github.com/go-git/go-billy/v5/memfs"
 	git "github.com/go-git/go-git/v5"
+	"github.com/go-git/go-git/v5/plumbing"
 	http "github.com/go-git/go-git/v5/plumbing/transport/http"
 	memory "github.com/go-git/go-git/v5/storage/memory"
 	log "github.com/sirupsen/logrus"
@@ -27,12 +28,11 @@ func cloneRepositorty(repoURL string, branch string, auth http.AuthMethod) (*git
 		return nil, err
 	}
 	if branch != "" {
-		log.Debugf("- pull branch %s", branch)
-		if err := w.Pull(&git.PullOptions{
-			SingleBranch: true,
-			RemoteName:   branch,
+		log.Infof("- checkout branch %s", branch)
+		if err := w.Checkout(&git.CheckoutOptions{
+			Branch: plumbing.NewRemoteReferenceName("origin", branch),
 		}); err != nil {
-			log.Warnf("branch %s cannot be pulled by %s", branch, err.Error())
+			return nil, err
 		}
 	}
 	return w, nil

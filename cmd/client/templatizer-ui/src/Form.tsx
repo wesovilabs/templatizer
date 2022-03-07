@@ -54,6 +54,7 @@ export const TemplatizerForm = () => {
     if (getValues('branchDefault') !== 'default') {
       request.branch = getValues('branch')
     }
+    request.configPath = getValues('configPath')
     return request
   }
 
@@ -106,7 +107,8 @@ export const TemplatizerForm = () => {
           display: "grid",
           gridRowGap: "20px",
           padding: "20px",
-          margin: "10px 300px",
+          margin: "10px 300px 6rem 300px",
+
         }}
       >
         <Typography variant="h3">{title}</Typography>
@@ -121,7 +123,6 @@ export const TemplatizerForm = () => {
         }
         {showTemplateVars &&
           <Grid container spacing={1}>
-
             <Grid item lg={12}>
               <Typography variant="h6">Tempalte variables</Typography>
             </Grid>

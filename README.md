@@ -11,21 +11,25 @@
 ---
 # {{.Templatizer}}
 
-The intention of **Templatizer** is to provide a handy and powerful mechanism to create custom projects from templates.
+The intention of **Templatizer** is to provide a handy and powerful mechanism to create a custom project boilerplate from existing template repositories.
 
-Gir repositories engines such as Github or Gitlab claim that they support repositories as templates. Actually,  they only permit us to tag repositories as templates; but we will need to replace the "dynamic values" after copying/clonnig the templates.  Sincerely,  this is far to be a teamplate mechanism from my point of view.
+Git repositories engines such as Github or Gitlab claim that they support template repositories. However, they only provide us a way to tag repositories as templates; but we will need to replace values" after copying/cloning the templates.  Sincerely,  this is far to be a template mechanism from my point of view.
 
 ## Getting started
 
-Templatizer takes advantage of existing template engines. So far, Templatizer supports Go Template but It's on the roadmap to provide other flavours such as Jinja.
+Templatizer takes advantage of existing template engines. So far, Templatizer supports Go Template but It's on the roadmap to provide other flavors such as Jinja.
 
 Templatizer is meant to be executed as an executable file from your local machine. Thus,  the communication with the repositories will be established on your own machine and the credentials won't be sent over the Internet.
 
+Templatizer is composed of two parts: a server and a web application but distributed as a single application. The server listens to the requests from the web application on port 16917 (This should be parameterized in upcoming releases). The port used by the web application can be any available port on your local machine. Templatizer will find an available port and open the web app on your browser. The port used by the web application can't be specified so far but It will be soon ([issue](https://github.com/wesovilabs/templatizer/issues/5)).
+
 ## Installation
+
+As It was mentioned in the above section, Templatizer is distributed as a single application. Let's see the different available options to install Templatizer on your local machine.
 ### Homebrew
 
 ```bash
-brew tap wesovilabs/homebrew-tools
+brew tap wesovilabs/tools
 brew install templatizer
 ```
 ### Snap
@@ -35,11 +39,11 @@ snap install templatizer
 ```
 ### Download executable files
 
-Visit the [releases](https://github.com/wesovilabs/templatizer/releases) to find the compilation that works for you.
+Visit the [releases](https://github.com/wesovilabs/templatizer/releases) to find the compilation that works best  for you.
 
-### Build tempaltizer from the code
+### Build Templatizer from the code
 
-After running the following commands you could find the binaries in the `dist` folder.
+The executables of Templates can be found in the folder `dist`, after running the following commands.
 
 ```bash
 git clone git@github.com:wesovilabs/templatizer.git
@@ -47,6 +51,8 @@ cd templatizer
 make buildFrontend build
 ```
 ### Run from the code
+
+Templatizer can launched from the code as following:
 
 ```bash
 git clone git@github.com:wesovilabs/templatizer.git
@@ -56,7 +62,6 @@ make buildFrontend run
 
 ## Templatizer in action
 
-Templatizer is composed by two components: A server and a backend. The server listens the requests on port 16917. The port used by the client (webapp) can be any available port on your local machine. Templatizer will find an available port and open the webapp on your browser.
 
 1. Fill the details of the Template repository
 
@@ -75,7 +80,7 @@ Templatizer is composed by two components: A server and a backend. The server li
 
 ## Define your own templates
 
-The template is the main piece used by Tempaltizer. A template is a Git repository  hosted  on any web repositories. The templates  will contain values tp be dynamically replaced (variables). The varibales can be used in the content of the files but also in the name of folders and files.
+The template is the main piece used by Templatizer. A template is a Git repository  hosted  on any web repositories. The templates  will contain values tp be dynamically replaced (variables). The varibales can be used in the content of the files but also in the name of folders and files.
 
 To define the variables in the templates we will use the specified format by Go Template. Variables are defined as `{{.variable}}`. See the following example taken from a Go file.
 

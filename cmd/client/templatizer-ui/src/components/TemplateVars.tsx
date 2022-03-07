@@ -27,6 +27,7 @@ export const TemplateVars: React.FC<TemplateVarsProps> = ({
 
                     const name = `var_${variable.name}`
                     setValue(name, variable.default)
+                    updateParam(variable.name, variable.default)
                     return (
                         <Grid item lg={10}>
                             <Controller
