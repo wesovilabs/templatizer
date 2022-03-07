@@ -23,6 +23,11 @@ Templatizer is meant to be executed as an executable file from your local machin
 
 Templatizer is composed of two parts: a server and a web application but distributed as a single application. The server listens to the requests from the web application on port 16917 (This should be parameterized in upcoming releases). The port used by the web application can be any available port on your local machine. Templatizer will find an available port and open the web app on your browser. The port used by the web application can't be specified so far but It will be soon ([issue](https://github.com/wesovilabs/templatizer/issues/5)).
 
+
+View the demo
+
+[![DemoI](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://youtu.be/xl9TYYnC_Rc)
+
 ## Installation
 
 As It was mentioned in the above section, Templatizer is distributed as a single application. Let's see the different available options to install Templatizer on your local machine.
