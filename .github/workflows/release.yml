@@ -47,7 +47,7 @@ jobs:
         run: git fetch --prune --unshallow
 
       - name: Download created content in previous steps
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: templatizer-ui-build
           path: cmd/client/templatizer-ui/build
