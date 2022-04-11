@@ -21,7 +21,7 @@ jobs:
           node-version: 14
       - run: yarn install
       - run: yarn build
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: templatizer-ui-build
           path: cmd/client/templatizer-ui/build
@@ -69,7 +69,7 @@ jobs:
         run: make test
 
       - name: Upload coverage
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: coverage
           path: coverage.*
@@ -112,7 +112,7 @@ jobs:
         run: make clean mod-tidy install build
 
       - name: Upload dist
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: dist
           path: dist

@@ -27,7 +27,7 @@ jobs:
         run: yarn build
 
       - name: Save created files
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: templatizer-ui-build
           path: cmd/client/templatizer-ui/build
